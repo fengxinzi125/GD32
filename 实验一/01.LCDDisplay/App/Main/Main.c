@@ -178,10 +178,12 @@ int main(void)
   LCDDisplayDir(1);
   LCDClear(GBLUE);
   s_iLCDPointColor = GREEN;
-  LCDShowString(30,40,210,24,24,"Hello! GD32 ^_^"); 
-
+  
+	//越在后面出现，显示的图层越高
   //显示背景图片
   DisPlayBackgroudJPEG();
+	
+	LCDShowString(30,40,210,24,24,"Hello! GD32 ^_^"); 
 
   //创建波形控件
   InitGraphWidgetStruct(&s_structGraph);

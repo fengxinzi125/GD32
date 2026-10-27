@@ -1,6 +1,6 @@
 Dependencies for Project 'GD32KeilPrj', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::.\ARMCC
-F (..\App\Main\Main.c)(0x6ADF1B29)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\FW\Include -I ..\App\Main -I ..\App\LED -I ..\ARM\SysTick -I ..\ARM\System -I ..\App\DataType -I ..\ARM\NVIC -I ..\HW\RCU -I ..\HW\Timer -I ..\HW\UART0 -I ..\App\LCD -I ..\App\Picture -I ..\HW\ADC -I ..\HW\DAC -I ..\App\Graph -I ..\HW\EXMC-I.\RTE\_Target_1-ID:\keil\ARM\CMSIS\6.1.0\CMSIS\Core\Include-ID:\keil\GigaDevice\GD32F30x_DFP\2.2.1\Device\Include-D__UVISION_VERSION="540" -DGD32F30X_HD -D_RTE_ -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (..\App\Main\Main.c)(0x6AE00F0F)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\FW\Include -I ..\App\Main -I ..\App\LED -I ..\ARM\SysTick -I ..\ARM\System -I ..\App\DataType -I ..\ARM\NVIC -I ..\HW\RCU -I ..\HW\Timer -I ..\HW\UART0 -I ..\App\LCD -I ..\App\Picture -I ..\HW\ADC -I ..\HW\DAC -I ..\App\Graph -I ..\HW\EXMC-I.\RTE\_Target_1-ID:\keil\ARM\CMSIS\6.1.0\CMSIS\Core\Include-ID:\keil\GigaDevice\GD32F30x_DFP\2.2.1\Device\Include-D__UVISION_VERSION="540" -DGD32F30X_HD -D_RTE_ -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (..\App\Main\Main.h)(0x624EEAFE)
 I (..\ARM\System\gd32f30x_conf.h)(0x613B420C)
 I (..\FW\Include\gd32f30x_adc.h)(0x5FDC4DD0)

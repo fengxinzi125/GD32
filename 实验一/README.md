@@ -46,4 +46,108 @@ GPIO_MODE_AF_OD        //复用开漏输出 可以实现“线与”功能
 -'硬件' I2C 的 SCL 与 SDA 引脚（I2C 外设必须工作在开漏模式下，避免总线短路）。   
 CAN 总线某些接口模式。
 ```
+## 关于如何在LED屏幕上面画直线
 
+```c
+void LCDDrawLine(u16 x1, u16 y1, u16 x2, u16 y2)
+{
+  u16 t; 
+  int xerr = 0, yerr = 0, delta_x, delta_y, distance; 
+  int incx, incy, uRow, uCol; 
+  delta_x = x2 - x1; //计算坐标增量 
+  delta_y = y2 - y1; 
+  uRow = x1;         //uRow 和 uCol 是当前的实时画笔坐标，从起点开始追踪。
+  uCol = y1; 
+
+  //设置单步方向 
+  if(delta_x > 0)
+  {
+    incx=1;
+  }
+
+  //垂直线
+  else if(delta_x==0)
+  {
+    incx=0;
+  }
+  else 
+  {
+    incx = -1;
+    delta_x = -delta_x;
+  } 
+
+  if(delta_y > 0)
+  {
+    incy = 1;
+  }
+
+  //水平线
+  else if(delta_y == 0)
+  {
+    incy = 0;
+  }
+  else
+  {
+    incy = -1;
+    delta_y = -delta_y;
+  } 
+
+  //选取基本增量坐标轴
+  if( delta_x>delta_y)
+  {
+    distance = delta_x;
+  }
+  else 
+  {
+    distance = delta_y;
+  }
+	
+	xerr = distance / 2;
+	yerr = distance /2;
+	
+  //画线输出
+	
+  for(t = 0; t <= distance ; t++ )
+  {  
+		LCDDrawPoint(uRow, uCol);//画点 
+    xerr += delta_x ; 
+    yerr += delta_y ; 
+    if(xerr >= distance) 
+    { 
+      xerr -= distance; 
+      uRow += incx; 
+    } 
+    if(yerr >= distance) 
+    { 
+      yerr -= distance; 
+      uCol += incy; 
+    }
+  }
+}
+```
+### 实现虚线
+``` c
+if(style & 0x8000)
+		{
+    LCDDrawPoint(uRow, uCol);//画点 
+		}
+		style = (style << 1) | (style >> 15);//左移右移和拼接
+```
+具体二进制推演（以传入 0xC000 为例）
+假设你想要画“两点实、两点空”的线型，传入的 style 是 0xC000。
+**二进制初始状态：1100 0000 0000 0000**
+- 第 1 次画线循环：
+检查最高位：1100... 最高位是 1，条件成立，屏幕上画一个点。
+循环左移拼接：
+- 左移 1 位得到：1000 0000 0000 0000 (最右补0)
+右移 15 位得到：0000 0000 0000 0001 (把最高位拿过来)
+拼合后 style 变为：1000 0000 0000 0001
+- 第 2 次画线循环：
+检查最高位：1000... 最高位是 1，条件成立，屏幕上画一个点。
+拼合后 style 变为：0000 0000 0000 0011
+- 第 3 次画线循环：
+检查最高位：0000... 最高位是 0，条件不成立，不画点，跳过。
+拼合后 style 变为：0000 0000 0000 0110
+- 第 4 次画线循环：
+检查最高位：依然是 0，不画点。
+拼合后 style 变为：0000 0000 0000 1100
