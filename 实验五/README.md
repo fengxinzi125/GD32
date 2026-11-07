@@ -150,7 +150,7 @@ FTLWriteSectors(s_arrWRBuff,
 
 ---
 
-## InitReadWriteNandFlash
+## InitReadWriteNandFlash()
 
 ### 设置允许读写的地址范围
 
@@ -213,4 +213,314 @@ s_pGUIDev = dev;
 
 ---
 
-## InitFTL
+## InitFTL()
+
+本函数的返回情况是：
+
+| 结果 | 含义                   |
+| ---- | ---------------------- |
+| `0`  | 初始化成功             |
+| `1`  | `InitNandFlash()` 失败 |
+| `2`  | 自动格式化失败         |
+
+### 将NADA参数保存到结构体
+
+```c
+s_structFTLDev.pageTotalSize = NAND_PAGE_TOTAL_SIZE;
+s_structFTLDev.pageMainSize  = NAND_PAGE_SIZE;
+s_structFTLDev.pageSpareSize = NAND_SPARE_AREA_SIZE;
+s_structFTLDev.blockPageNum  = NAND_BLOCK_SIZE;
+s_structFTLDev.planeBlockNum = NAND_ZONE_SIZE;
+s_structFTLDev.blockTotalNum = NAND_BLOCK_COUNT;
+```
+
+**成员及其代表含义** 
+
+| 成员            | 数值 | 含义                          |
+| --------------- | ---- | ----------------------------- |
+| `pageTotalSize` | 2112 | 每页主区与 Spare 区的总字节数 |
+| `pageMainSize`  | 2048 | 每页主数据区字节数            |
+| `pageSpareSize` | 64   | 每页 Spare 区字节数           |
+| `blockPageNum`  | 64   | 每块包含的页数                |
+| `planeBlockNum` | 1024 | 每个 Plane 包含的块数         |
+| `blockTotalNum` | 1024 | 整个 NAND 的块数              |
+
+### 检查扇区大小
+
+ 校验扇区大小，要保证扇区大小小于等于一页，而且为512整数倍
+
+```c
+if((0 == s_structFTLDev.pageMainSize / FTL_SECTOR_SIZE)
+   || (0 != FTL_SECTOR_SIZE % 512))
+{
+  printf("InitFTL: error sector size\r\n");
+  while(1);
+} 
+```
+
+### 初始化NADA底层
+
+```c
+if(InitNandFlash())
+{
+  return 1;
+}
+```
+
+### 建立LUT映射表
+
+```c
+if(0 != CreateLUT())
+{
+  printf("InitFTL: format nand flash...\r\n");
+
+  if(FTLFormat())
+  {
+    printf("InitFTL: format failed!\r\n");
+    return 2;
+  }
+}
+```
+
+可以理解为 逻辑块号 → 物理块号
+
+比如
+
+逻辑块0的数据在物理块3
+逻辑块1的数据在物理块7
+
+```c
+lut[0] = 3;
+lut[1] = 7;
+```
+
+### 这个函数在项目中的调用关系
+
+```c
+main()
+  → InitFTL()
+      → 保存 NAND 参数
+      → 检查扇区配置，算出每页4个扇区
+      → InitNandFlash()
+      → CreateLUT()
+          → 成功：继续
+          → 失败：FTLFormat()，内部重建 LUT
+      → 打印块信息，返回0
+
+  → InitReadWriteNandFlash()
+      → 设置界面及读写回调
+```
+
+---
+
+## u32 FTLReadSectors(u8 *pBuffer, u32 sectorNo, u32 sectorSize, u32 sectorCount)
+
+### 参数意义
+
+| 参数          | 含义                               | 示例  |
+| ------------- |:----------------------------------:| ----- |
+| `pBuffer`     | 存放读取结果的 RAM 地址            | `buf` |
+| `sectorNo`    | 起始逻辑扇区号，从 0 开始          | `261` |
+| `sectorSize`  | 一个扇区的字节数，本项目固定为 512 | `512` |
+| `sectorCount` | 连续读取几个扇区                   | `2`   |
+
+**例如**
+
+```c
+u8 buf[1024];
+
+FTLReadSectors(buf, 261, 512, 2);
+```
+
+### 计算逻辑块号、页号、列地址
+
+**这是函数中最需要理解的部分：** 
+
+```c
+readBlock = (sectorNo / s_structFTLDev.sectorPerPage)
+            / s_structFTLDev.blockPageNum;
+
+readPage = (sectorNo / s_structFTLDev.sectorPerPage)
+           % s_structFTLDev.blockPageNum;
+
+readColumn = (sectorNo % s_structFTLDev.sectorPerPage)
+             * sectorSize;
+```
+
+```c
+sectorNo / sectorPerPage  每页 4 个扇区，所以“扇区号除以 4”
+得到逻辑空间中从头开始数的页号
+readBlock = 全局逻辑页号 / 64;
+readPage  = 全局逻辑页号 % 64;
+每 64 页构成一块：
+- 除以 64，得到属于哪个逻辑块。
+- 对 64 取余，得到在这个块内的页号。
+```
+
+---
+
+## u32 FTLWriteSectors(u8 *pBuffer, u32 sectorNo, u32 sectorSize, u32 sectorCount)
+
+```c
+RETRY1_MARK:
+
+logicBlock  = (sectorNo / s_structFTLDev.sectorPerPage)
+              / s_structFTLDev.blockPageNum;
+
+writePage   = (sectorNo / s_structFTLDev.sectorPerPage)
+              % s_structFTLDev.blockPageNum;
+
+writeColumn = (sectorNo % s_structFTLDev.sectorPerPage)
+              * sectorSize;
+```
+
+和上面一样，可以理解为
+
+```c
+logicBlock  = sectorNo / 256;
+writePage   = (sectorNo / 4) % 64;
+writeColumn = (sectorNo % 4) * 512;
+```
+
+```textile
+WriteProc(addr, data)
+│
+├─ FTLReadSectors(...)
+│    先读取512字节，保留其他字节
+│
+├─ s_arrWRBuff[addr % 512] = data
+│    在RAM中修改一个字节
+│
+└─ FTLWriteSectors(...)
+     │
+     ├─ FTLLogicNumToPhysicalNum()
+     │    查出物理块
+     │
+     ├─ NandCheckPage()
+     │    检查整页Main区是否全为FF
+     │
+     ├─ 全为FF → NandWritePage()
+     │
+     └─ 已有数据 → FTLFineUnuseBlock()
+                   → NandCopyBlockWithWrite()
+                   → 更新LUT
+                   → NandEraseBlock()
+```
+
+---
+
+## EXMC
+
+### 她有什么作用
+
+EXMC，外部存储器控制器。CPU读写一个指定地址，EMMC就会把这次访问转换为外部引脚的读写时序，完成和其他外设的通讯。
+
+发送一个字节可以这样
+
+```tex
+设置数据引脚D0～D7
+→ 设置命令/地址选择信号
+→ 拉低写使能信号
+→ 等待一定时间
+→ 拉高写使能信号
+```
+
+使用 EXMC 后，程序可以写
+
+```c
+NAND_CMD_AREA = 0x80;
+```
+
+EXMC 硬件会根据事先配置的参数，自动控制相关引脚，产生这一次传输需要的时序。
+
+| 外部器件   | EXMC配置区域  | 配置位置      |
+| ---------- | ------------- | ------------- |
+| LCD        | Bank0 Region1 | `EXMC.c`      |
+| 外部SRAM   | Bank0 Region3 | `EXMC.c`      |
+| NAND Flash | Bank1         | `NandFlash.c` |
+
+NAND 主要涉及这些信号：
+
+| 信号   | 作用                 |
+| ------ | -------------------- |
+| D0～D7 | 传输命令、地址、数据 |
+| CLE    | 表示当前传输的是命令 |
+| ALE    | 表示当前传输的是地址 |
+| WE#    | 写使能               |
+| RE#    | 读使能               |
+| CE#    | 片选，选中NAND       |
+| R/B#   | NAND报告忙或就绪     |
+
+```text
+nand_timing_init_struct.setuptime       = 2;
+建立时间：正式传输前，让相关信号提前稳定
+nand_timing_init_struct.waittime        = 3;
+等待时间：给外部器件完成本次访问的时间
+nand_timing_init_struct.holdtime        = 2;
+保持时间：传输后，让相关信号继续保持
+nand_timing_init_struct.databus_hiztime = 2;
+高阻时间：给总线释放、切换留出时间
+```
+
+### 配置好以后，为什么“写地址”就能控制 NAND
+
+| CPU访问地址  | 用途         |
+| ------------ | ------------ |
+| `0x70010000` | 发送NAND命令 |
+| `0x70020000` | 发送NAND地址 |
+| `0x70000000` | 读写NAND数据 |
+
+例如
+
+```c
+NAND_CMD_AREA = 0x80;
+//相当于
+*(__IO u8 *)0x70010000 = 0x80;
+```
+
+0x70010000 → 告诉EXMC：这次访问要发送命令
+0x80       → 告诉NAND：发送的命令内容是0x80
+
+---
+
+## u32 NandReadID(void)
+
+```c
+NAND_CMD_AREA = NAND_CMD_READID;
+//头文件定义
+#define NAND_CMD_READID ((uint8_t)0x90)
+//所以相当于
+NAND_CMD_AREA = 0x90;
+```
+
+```tremor
+CPU向0x70010000写入0x90
+        ↓
+EXMC产生命令写入时序
+        ↓
+NAND收到0x90，准备执行读取ID操作
+```
+
+**从数据入口读取32位结果** 
+
+```c
+id = *(__IO u32 *)(BANK_NAND_ADDR | EXMC_DATA_AREA);
+BANK_NAND_ADDR = 0x70000000
+EXMC_DATA_AREA = 0x00000000
+0x70000000 | 0x00000000 = 0x70000000
+//所以相当于
+id = *(__IO u32 *)0x70000000;
+```
+
+```c
+NAND_ADDR_AREA = (eccAddr >> 0) & 0xFF;
+//这样表示取低八位，为什么要与运算呢
+0xFF = 00000000 11111111
+column = 512 = 0x0200
+
+column： 00000010 00000000
+0x00FF： 00000000 11111111
+         ─────────────────
+结果：   00000000 00000000
+这样就可以把上面高位的变成0啦
+```
