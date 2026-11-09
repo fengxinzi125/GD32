@@ -34,6 +34,9 @@
 #include "BMP.h"
 #include "Touch.h"
 #include "ReadWriteSDCard.h"
+#include "stdio.h"
+#include "SDCardBySPI.h"
+
 
 /*********************************************************************************************************
 *                                              宏定义
@@ -178,9 +181,27 @@ static  void  Proc1SecTask(void)
 *********************************************************************************************************/
 int main(void)
 {
+  static u8 buf[512];
+  u32 status;
+  u32 i;
+
   InitHardware();   //初始化硬件相关函数
   InitSoftware();   //初始化软件相关函数
-  
+
+  status = SDReadSector(buf, 1, 1);
+  if (status == SD_OK)
+  {
+    for (i = 0; i < 4; i++)
+    {
+      printf("%02X ", (unsigned int)buf[i]);
+    }
+    printf("\r\n");
+  }
+  else
+  {
+    printf("Read failed: %u\r\n", (unsigned int)status);
+  }
+
   while(1)
   {
     Proc1msTask();  //1ms处理任务

@@ -29,9 +29,12 @@ Section Cross References
     main.o(i.Proc2msTask) refers to main.o(.data) for s_iCnt
     main.o(i.main) refers to main.o(i.InitHardware) for InitHardware
     main.o(i.main) refers to main.o(i.InitSoftware) for InitSoftware
+    main.o(i.main) refers to sdcardbyspi.o(i.SDReadSector) for SDReadSector
+    main.o(i.main) refers to printf8.o(i.__0printf$8) for __2printf
     main.o(i.main) refers to main.o(i.Proc1msTask) for Proc1msTask
     main.o(i.main) refers to main.o(i.Proc2msTask) for Proc2msTask
     main.o(i.main) refers to main.o(i.Proc1SecTask) for Proc1SecTask
+    main.o(i.main) refers to main.o(.bss) for buf
     led.o(i.ConfigLEDGPIO) refers to gd32f30x_rcu.o(i.rcu_periph_clock_enable) for rcu_periph_clock_enable
     led.o(i.ConfigLEDGPIO) refers to gd32f30x_gpio.o(i.gpio_init) for gpio_init
     led.o(i.ConfigLEDGPIO) refers to gd32f30x_gpio.o(i.gpio_bit_set) for gpio_bit_set
@@ -1352,41 +1355,41 @@ Image Symbol Table
 
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
     ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
     ../clib/microlib/stdio/streams.c         0x00000000   Number         0  stdout.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
-    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixui.o ABSOLUTE
+    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  dfltui.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
     ..\ARM\NVIC\NVIC.c                       0x00000000   Number         0  nvic.o ABSOLUTE
@@ -1756,73 +1759,73 @@ Image Symbol Table
     i.jd_decomp                              0x08005e06   Section        0  tjpgd.o(i.jd_decomp)
     i.jd_prepare                             0x08005ea8   Section        0  tjpgd.o(i.jd_prepare)
     i.main                                   0x08006244   Section        0  main.o(i.main)
-    i.mcu_load                               0x0800625c   Section        0  tjpgd.o(i.mcu_load)
-    mcu_load                                 0x0800625d   Thumb Code   478  tjpgd.o(i.mcu_load)
-    i.mcu_output                             0x08006440   Section        0  tjpgd.o(i.mcu_output)
-    mcu_output                               0x08006441   Thumb Code   910  tjpgd.o(i.mcu_output)
-    i.nvic_irq_enable                        0x080067d4   Section        0  gd32f30x_misc.o(i.nvic_irq_enable)
-    i.nvic_priority_group_set                0x08006898   Section        0  gd32f30x_misc.o(i.nvic_priority_group_set)
-    i.rcu_ahb_clock_config                   0x080068ac   Section        0  gd32f30x_rcu.o(i.rcu_ahb_clock_config)
-    i.rcu_apb1_clock_config                  0x080068c4   Section        0  gd32f30x_rcu.o(i.rcu_apb1_clock_config)
-    i.rcu_apb2_clock_config                  0x080068dc   Section        0  gd32f30x_rcu.o(i.rcu_apb2_clock_config)
-    i.rcu_clock_freq_get                     0x080068f4   Section        0  gd32f30x_rcu.o(i.rcu_clock_freq_get)
-    i.rcu_deinit                             0x08006a4c   Section        0  gd32f30x_rcu.o(i.rcu_deinit)
-    i.rcu_flag_get                           0x08006aa0   Section        0  gd32f30x_rcu.o(i.rcu_flag_get)
-    i.rcu_osci_on                            0x08006ac4   Section        0  gd32f30x_rcu.o(i.rcu_osci_on)
-    i.rcu_osci_stab_wait                     0x08006ae4   Section        0  gd32f30x_rcu.o(i.rcu_osci_stab_wait)
-    i.rcu_periph_clock_enable                0x08006bf4   Section        0  gd32f30x_rcu.o(i.rcu_periph_clock_enable)
-    i.rcu_periph_reset_disable               0x08006c14   Section        0  gd32f30x_rcu.o(i.rcu_periph_reset_disable)
-    i.rcu_periph_reset_enable                0x08006c34   Section        0  gd32f30x_rcu.o(i.rcu_periph_reset_enable)
-    i.rcu_pll_config                         0x08006c54   Section        0  gd32f30x_rcu.o(i.rcu_pll_config)
-    i.rcu_pllpresel_config                   0x08006c74   Section        0  gd32f30x_rcu.o(i.rcu_pllpresel_config)
-    i.rcu_predv0_config                      0x08006c8c   Section        0  gd32f30x_rcu.o(i.rcu_predv0_config)
-    i.rcu_system_clock_source_config         0x08006cac   Section        0  gd32f30x_rcu.o(i.rcu_system_clock_source_config)
-    i.rcu_system_clock_source_get            0x08006cc4   Section        0  gd32f30x_rcu.o(i.rcu_system_clock_source_get)
-    i.restart                                0x08006cd4   Section        0  tjpgd.o(i.restart)
-    restart                                  0x08006cd5   Thumb Code   112  tjpgd.o(i.restart)
-    i.system_clock_120m_hxtal                0x08006d44   Section        0  system_gd32f30x.o(i.system_clock_120m_hxtal)
-    system_clock_120m_hxtal                  0x08006d45   Thumb Code   256  system_gd32f30x.o(i.system_clock_120m_hxtal)
-    i.system_clock_config                    0x08006e54   Section        0  system_gd32f30x.o(i.system_clock_config)
-    system_clock_config                      0x08006e55   Thumb Code     8  system_gd32f30x.o(i.system_clock_config)
-    i.timer_deinit                           0x08006e5c   Section        0  gd32f30x_timer.o(i.timer_deinit)
-    i.timer_enable                           0x08006f38   Section        0  gd32f30x_timer.o(i.timer_enable)
-    i.timer_init                             0x08006f44   Section        0  gd32f30x_timer.o(i.timer_init)
-    i.timer_interrupt_enable                 0x08006fdc   Section        0  gd32f30x_timer.o(i.timer_interrupt_enable)
-    i.timer_interrupt_flag_clear             0x08006fe4   Section        0  gd32f30x_timer.o(i.timer_interrupt_flag_clear)
-    i.timer_interrupt_flag_get               0x08006fea   Section        0  gd32f30x_timer.o(i.timer_interrupt_flag_get)
-    i.timer_struct_para_init                 0x08007002   Section        0  gd32f30x_timer.o(i.timer_struct_para_init)
-    i.usart_baudrate_set                     0x08007018   Section        0  gd32f30x_usart.o(i.usart_baudrate_set)
-    i.usart_data_receive                     0x080070a8   Section        0  gd32f30x_usart.o(i.usart_data_receive)
-    i.usart_data_transmit                    0x080070b2   Section        0  gd32f30x_usart.o(i.usart_data_transmit)
-    i.usart_deinit                           0x080070bc   Section        0  gd32f30x_usart.o(i.usart_deinit)
-    i.usart_enable                           0x0800714c   Section        0  gd32f30x_usart.o(i.usart_enable)
-    i.usart_flag_get                         0x08007156   Section        0  gd32f30x_usart.o(i.usart_flag_get)
-    i.usart_interrupt_disable                0x08007174   Section        0  gd32f30x_usart.o(i.usart_interrupt_disable)
-    i.usart_interrupt_enable                 0x0800718e   Section        0  gd32f30x_usart.o(i.usart_interrupt_enable)
-    i.usart_interrupt_flag_clear             0x080071a8   Section        0  gd32f30x_usart.o(i.usart_interrupt_flag_clear)
-    i.usart_interrupt_flag_get               0x080071c2   Section        0  gd32f30x_usart.o(i.usart_interrupt_flag_get)
-    i.usart_parity_config                    0x080071fa   Section        0  gd32f30x_usart.o(i.usart_parity_config)
-    i.usart_receive_config                   0x0800720a   Section        0  gd32f30x_usart.o(i.usart_receive_config)
-    i.usart_stop_bit_set                     0x0800721a   Section        0  gd32f30x_usart.o(i.usart_stop_bit_set)
-    i.usart_transmit_config                  0x0800722a   Section        0  gd32f30x_usart.o(i.usart_transmit_config)
-    i.usart_word_length_set                  0x0800723a   Section        0  gd32f30x_usart.o(i.usart_word_length_set)
-    .constdata                               0x0800724a   Section     6080  lcd.o(.constdata)
-    .constdata                               0x08008a0a   Section     1216  tjpgd.o(.constdata)
-    Zig                                      0x08008a0a   Data          64  tjpgd.o(.constdata)
-    Ipsf                                     0x08008a4a   Data         128  tjpgd.o(.constdata)
-    Clip8                                    0x08008aca   Data        1024  tjpgd.o(.constdata)
-    .constdata                               0x08008eca   Section    159049  jpeg.o(.constdata)
-    .constdata                               0x0802fc13   Section    101952  bmp.o(.constdata)
-    .constdata                               0x08048a54   Section       76  guibutton.o(.constdata)
-    s_arrButtonX                             0x08048a54   Data          38  guibutton.o(.constdata)
-    s_arrButtonY                             0x08048a7a   Data          38  guibutton.o(.constdata)
-    .constdata                               0x08048aa0   Section       28  guilineedit.o(.constdata)
-    s_arrX0                                  0x08048aa0   Data           8  guilineedit.o(.constdata)
-    s_arrY0                                  0x08048aa8   Data           8  guilineedit.o(.constdata)
-    s_arrWidth                               0x08048ab0   Data           8  guilineedit.o(.constdata)
-    s_arrTextMaxLen                          0x08048ab8   Data           4  guilineedit.o(.constdata)
-    .conststring                             0x08048abc   Section       67  jpeg.o(.conststring)
-    .conststring                             0x08048b00   Section       62  guibutton.o(.conststring)
+    i.mcu_load                               0x080062b4   Section        0  tjpgd.o(i.mcu_load)
+    mcu_load                                 0x080062b5   Thumb Code   478  tjpgd.o(i.mcu_load)
+    i.mcu_output                             0x08006498   Section        0  tjpgd.o(i.mcu_output)
+    mcu_output                               0x08006499   Thumb Code   910  tjpgd.o(i.mcu_output)
+    i.nvic_irq_enable                        0x0800682c   Section        0  gd32f30x_misc.o(i.nvic_irq_enable)
+    i.nvic_priority_group_set                0x080068f0   Section        0  gd32f30x_misc.o(i.nvic_priority_group_set)
+    i.rcu_ahb_clock_config                   0x08006904   Section        0  gd32f30x_rcu.o(i.rcu_ahb_clock_config)
+    i.rcu_apb1_clock_config                  0x0800691c   Section        0  gd32f30x_rcu.o(i.rcu_apb1_clock_config)
+    i.rcu_apb2_clock_config                  0x08006934   Section        0  gd32f30x_rcu.o(i.rcu_apb2_clock_config)
+    i.rcu_clock_freq_get                     0x0800694c   Section        0  gd32f30x_rcu.o(i.rcu_clock_freq_get)
+    i.rcu_deinit                             0x08006aa4   Section        0  gd32f30x_rcu.o(i.rcu_deinit)
+    i.rcu_flag_get                           0x08006af8   Section        0  gd32f30x_rcu.o(i.rcu_flag_get)
+    i.rcu_osci_on                            0x08006b1c   Section        0  gd32f30x_rcu.o(i.rcu_osci_on)
+    i.rcu_osci_stab_wait                     0x08006b3c   Section        0  gd32f30x_rcu.o(i.rcu_osci_stab_wait)
+    i.rcu_periph_clock_enable                0x08006c4c   Section        0  gd32f30x_rcu.o(i.rcu_periph_clock_enable)
+    i.rcu_periph_reset_disable               0x08006c6c   Section        0  gd32f30x_rcu.o(i.rcu_periph_reset_disable)
+    i.rcu_periph_reset_enable                0x08006c8c   Section        0  gd32f30x_rcu.o(i.rcu_periph_reset_enable)
+    i.rcu_pll_config                         0x08006cac   Section        0  gd32f30x_rcu.o(i.rcu_pll_config)
+    i.rcu_pllpresel_config                   0x08006ccc   Section        0  gd32f30x_rcu.o(i.rcu_pllpresel_config)
+    i.rcu_predv0_config                      0x08006ce4   Section        0  gd32f30x_rcu.o(i.rcu_predv0_config)
+    i.rcu_system_clock_source_config         0x08006d04   Section        0  gd32f30x_rcu.o(i.rcu_system_clock_source_config)
+    i.rcu_system_clock_source_get            0x08006d1c   Section        0  gd32f30x_rcu.o(i.rcu_system_clock_source_get)
+    i.restart                                0x08006d2c   Section        0  tjpgd.o(i.restart)
+    restart                                  0x08006d2d   Thumb Code   112  tjpgd.o(i.restart)
+    i.system_clock_120m_hxtal                0x08006d9c   Section        0  system_gd32f30x.o(i.system_clock_120m_hxtal)
+    system_clock_120m_hxtal                  0x08006d9d   Thumb Code   256  system_gd32f30x.o(i.system_clock_120m_hxtal)
+    i.system_clock_config                    0x08006eac   Section        0  system_gd32f30x.o(i.system_clock_config)
+    system_clock_config                      0x08006ead   Thumb Code     8  system_gd32f30x.o(i.system_clock_config)
+    i.timer_deinit                           0x08006eb4   Section        0  gd32f30x_timer.o(i.timer_deinit)
+    i.timer_enable                           0x08006f90   Section        0  gd32f30x_timer.o(i.timer_enable)
+    i.timer_init                             0x08006f9c   Section        0  gd32f30x_timer.o(i.timer_init)
+    i.timer_interrupt_enable                 0x08007034   Section        0  gd32f30x_timer.o(i.timer_interrupt_enable)
+    i.timer_interrupt_flag_clear             0x0800703c   Section        0  gd32f30x_timer.o(i.timer_interrupt_flag_clear)
+    i.timer_interrupt_flag_get               0x08007042   Section        0  gd32f30x_timer.o(i.timer_interrupt_flag_get)
+    i.timer_struct_para_init                 0x0800705a   Section        0  gd32f30x_timer.o(i.timer_struct_para_init)
+    i.usart_baudrate_set                     0x08007070   Section        0  gd32f30x_usart.o(i.usart_baudrate_set)
+    i.usart_data_receive                     0x08007100   Section        0  gd32f30x_usart.o(i.usart_data_receive)
+    i.usart_data_transmit                    0x0800710a   Section        0  gd32f30x_usart.o(i.usart_data_transmit)
+    i.usart_deinit                           0x08007114   Section        0  gd32f30x_usart.o(i.usart_deinit)
+    i.usart_enable                           0x080071a4   Section        0  gd32f30x_usart.o(i.usart_enable)
+    i.usart_flag_get                         0x080071ae   Section        0  gd32f30x_usart.o(i.usart_flag_get)
+    i.usart_interrupt_disable                0x080071cc   Section        0  gd32f30x_usart.o(i.usart_interrupt_disable)
+    i.usart_interrupt_enable                 0x080071e6   Section        0  gd32f30x_usart.o(i.usart_interrupt_enable)
+    i.usart_interrupt_flag_clear             0x08007200   Section        0  gd32f30x_usart.o(i.usart_interrupt_flag_clear)
+    i.usart_interrupt_flag_get               0x0800721a   Section        0  gd32f30x_usart.o(i.usart_interrupt_flag_get)
+    i.usart_parity_config                    0x08007252   Section        0  gd32f30x_usart.o(i.usart_parity_config)
+    i.usart_receive_config                   0x08007262   Section        0  gd32f30x_usart.o(i.usart_receive_config)
+    i.usart_stop_bit_set                     0x08007272   Section        0  gd32f30x_usart.o(i.usart_stop_bit_set)
+    i.usart_transmit_config                  0x08007282   Section        0  gd32f30x_usart.o(i.usart_transmit_config)
+    i.usart_word_length_set                  0x08007292   Section        0  gd32f30x_usart.o(i.usart_word_length_set)
+    .constdata                               0x080072a2   Section     6080  lcd.o(.constdata)
+    .constdata                               0x08008a62   Section     1216  tjpgd.o(.constdata)
+    Zig                                      0x08008a62   Data          64  tjpgd.o(.constdata)
+    Ipsf                                     0x08008aa2   Data         128  tjpgd.o(.constdata)
+    Clip8                                    0x08008b22   Data        1024  tjpgd.o(.constdata)
+    .constdata                               0x08008f22   Section    159049  jpeg.o(.constdata)
+    .constdata                               0x0802fc6b   Section    101952  bmp.o(.constdata)
+    .constdata                               0x08048aac   Section       76  guibutton.o(.constdata)
+    s_arrButtonX                             0x08048aac   Data          38  guibutton.o(.constdata)
+    s_arrButtonY                             0x08048ad2   Data          38  guibutton.o(.constdata)
+    .constdata                               0x08048af8   Section       28  guilineedit.o(.constdata)
+    s_arrX0                                  0x08048af8   Data           8  guilineedit.o(.constdata)
+    s_arrY0                                  0x08048b00   Data           8  guilineedit.o(.constdata)
+    s_arrWidth                               0x08048b08   Data           8  guilineedit.o(.constdata)
+    s_arrTextMaxLen                          0x08048b10   Data           4  guilineedit.o(.constdata)
+    .conststring                             0x08048b14   Section       67  jpeg.o(.conststring)
+    .conststring                             0x08048b58   Section       62  guibutton.o(.conststring)
     .data                                    0x20000000   Section        2  main.o(.data)
     s_iCnt                                   0x20000000   Data           1  main.o(.data)
     s_iCnt                                   0x20000001   Data           1  main.o(.data)
@@ -1864,42 +1867,44 @@ Image Symbol Table
     s_iTimDelayCnt                           0x200000a8   Data           4  systick.o(.data)
     .data                                    0x200000ac   Section        4  system_gd32f30x.o(.data)
     .data                                    0x200000b0   Section        4  stdout.o(.data)
-    .bss                                     0x200000b4   Section       14  lcd.o(.bss)
-    .bss                                     0x200000c4   Section     4096  jpeg.o(.bss)
-    .bss                                     0x200010c4   Section       56  bmp.o(.bss)
-    s_structFileHeader                       0x200010c4   Data          16  bmp.o(.bss)
-    s_structInfoHeader                       0x200010d4   Data          40  bmp.o(.bss)
-    .bss                                     0x200010fc   Section       24  gt1151q.o(.bss)
-    s_structIICDev                           0x200010fc   Data          24  gt1151q.o(.bss)
-    .bss                                     0x20001114   Section       72  touch.o(.bss)
-    s_structTouchDev                         0x20001114   Data          36  touch.o(.bss)
-    s_structNewDev                           0x20001138   Data          36  touch.o(.bss)
-    .bss                                     0x2000115c   Section     2136  readwritesdcard.o(.bss)
-    s_structGUIDev                           0x2000115c   Data          24  readwritesdcard.o(.bss)
-    s_arrSDBuffer                            0x20001174   Data        2048  readwritesdcard.o(.bss)
-    s_arrStringBuff                          0x20001974   Data          64  readwritesdcard.o(.bss)
-    .bss                                     0x200019b4   Section     1368  guibutton.o(.bss)
-    s_arrButton                              0x200019b4   Data        1368  guibutton.o(.bss)
-    .bss                                     0x20001f0c   Section      672  guilineedit.o(.bss)
-    s_arrLineEdit                            0x20001f0c   Data         256  guilineedit.o(.bss)
-    s_arrText                                0x2000200c   Data         256  guilineedit.o(.bss)
-    s_structWriteAddrHasFocusImage           0x2000210c   Data          20  guilineedit.o(.bss)
-    s_structWriteAddrNoFocusImage            0x20002120   Data          20  guilineedit.o(.bss)
-    s_structWriteDataHasFocusImage           0x20002134   Data          20  guilineedit.o(.bss)
-    s_structWriteDataNoFocusImage            0x20002148   Data          20  guilineedit.o(.bss)
-    s_structReadAddrHasFocusImage            0x2000215c   Data          20  guilineedit.o(.bss)
-    s_structReadAddrNoFocusImage             0x20002170   Data          20  guilineedit.o(.bss)
-    s_structReadLenHasFocusImage             0x20002184   Data          20  guilineedit.o(.bss)
-    s_structReadLenNoFocusImage              0x20002198   Data          20  guilineedit.o(.bss)
-    .bss                                     0x200021ac   Section      400  guiterminal.o(.bss)
-    s_structTherminal                        0x200021ac   Data          16  guiterminal.o(.bss)
-    s_arrString                              0x200021bc   Data         384  guiterminal.o(.bss)
-    .bss                                     0x2000233c   Section      224  uart0.o(.bss)
-    s_structUARTSendCirQue                   0x2000233c   Data          12  uart0.o(.bss)
-    s_structUARTRecCirQue                    0x20002348   Data          12  uart0.o(.bss)
-    s_arrSendBuf                             0x20002354   Data         100  uart0.o(.bss)
-    s_arrRecBuf                              0x200023b8   Data         100  uart0.o(.bss)
-    STACK                                    0x20002420   Section    12800  startup_gd32f30x_hd.o(STACK)
+    .bss                                     0x200000b4   Section      512  main.o(.bss)
+    buf                                      0x200000b4   Data         512  main.o(.bss)
+    .bss                                     0x200002b4   Section       14  lcd.o(.bss)
+    .bss                                     0x200002c4   Section     4096  jpeg.o(.bss)
+    .bss                                     0x200012c4   Section       56  bmp.o(.bss)
+    s_structFileHeader                       0x200012c4   Data          16  bmp.o(.bss)
+    s_structInfoHeader                       0x200012d4   Data          40  bmp.o(.bss)
+    .bss                                     0x200012fc   Section       24  gt1151q.o(.bss)
+    s_structIICDev                           0x200012fc   Data          24  gt1151q.o(.bss)
+    .bss                                     0x20001314   Section       72  touch.o(.bss)
+    s_structTouchDev                         0x20001314   Data          36  touch.o(.bss)
+    s_structNewDev                           0x20001338   Data          36  touch.o(.bss)
+    .bss                                     0x2000135c   Section     2136  readwritesdcard.o(.bss)
+    s_structGUIDev                           0x2000135c   Data          24  readwritesdcard.o(.bss)
+    s_arrSDBuffer                            0x20001374   Data        2048  readwritesdcard.o(.bss)
+    s_arrStringBuff                          0x20001b74   Data          64  readwritesdcard.o(.bss)
+    .bss                                     0x20001bb4   Section     1368  guibutton.o(.bss)
+    s_arrButton                              0x20001bb4   Data        1368  guibutton.o(.bss)
+    .bss                                     0x2000210c   Section      672  guilineedit.o(.bss)
+    s_arrLineEdit                            0x2000210c   Data         256  guilineedit.o(.bss)
+    s_arrText                                0x2000220c   Data         256  guilineedit.o(.bss)
+    s_structWriteAddrHasFocusImage           0x2000230c   Data          20  guilineedit.o(.bss)
+    s_structWriteAddrNoFocusImage            0x20002320   Data          20  guilineedit.o(.bss)
+    s_structWriteDataHasFocusImage           0x20002334   Data          20  guilineedit.o(.bss)
+    s_structWriteDataNoFocusImage            0x20002348   Data          20  guilineedit.o(.bss)
+    s_structReadAddrHasFocusImage            0x2000235c   Data          20  guilineedit.o(.bss)
+    s_structReadAddrNoFocusImage             0x20002370   Data          20  guilineedit.o(.bss)
+    s_structReadLenHasFocusImage             0x20002384   Data          20  guilineedit.o(.bss)
+    s_structReadLenNoFocusImage              0x20002398   Data          20  guilineedit.o(.bss)
+    .bss                                     0x200023ac   Section      400  guiterminal.o(.bss)
+    s_structTherminal                        0x200023ac   Data          16  guiterminal.o(.bss)
+    s_arrString                              0x200023bc   Data         384  guiterminal.o(.bss)
+    .bss                                     0x2000253c   Section      224  uart0.o(.bss)
+    s_structUARTSendCirQue                   0x2000253c   Data          12  uart0.o(.bss)
+    s_structUARTRecCirQue                    0x20002548   Data          12  uart0.o(.bss)
+    s_arrSendBuf                             0x20002554   Data         100  uart0.o(.bss)
+    s_arrRecBuf                              0x200025b8   Data         100  uart0.o(.bss)
+    STACK                                    0x20002620   Section    12800  startup_gd32f30x_hd.o(STACK)
 
     Global Symbols
 
@@ -2156,74 +2161,74 @@ Image Symbol Table
     gpio_input_bit_get                       0x08005d37   Thumb Code    16  gd32f30x_gpio.o(i.gpio_input_bit_get)
     jd_decomp                                0x08005e07   Thumb Code   162  tjpgd.o(i.jd_decomp)
     jd_prepare                               0x08005ea9   Thumb Code   924  tjpgd.o(i.jd_prepare)
-    main                                     0x08006245   Thumb Code    24  main.o(i.main)
-    nvic_irq_enable                          0x080067d5   Thumb Code   186  gd32f30x_misc.o(i.nvic_irq_enable)
-    nvic_priority_group_set                  0x08006899   Thumb Code    10  gd32f30x_misc.o(i.nvic_priority_group_set)
-    rcu_ahb_clock_config                     0x080068ad   Thumb Code    18  gd32f30x_rcu.o(i.rcu_ahb_clock_config)
-    rcu_apb1_clock_config                    0x080068c5   Thumb Code    18  gd32f30x_rcu.o(i.rcu_apb1_clock_config)
-    rcu_apb2_clock_config                    0x080068dd   Thumb Code    18  gd32f30x_rcu.o(i.rcu_apb2_clock_config)
-    rcu_clock_freq_get                       0x080068f5   Thumb Code   310  gd32f30x_rcu.o(i.rcu_clock_freq_get)
-    rcu_deinit                               0x08006a4d   Thumb Code    72  gd32f30x_rcu.o(i.rcu_deinit)
-    rcu_flag_get                             0x08006aa1   Thumb Code    30  gd32f30x_rcu.o(i.rcu_flag_get)
-    rcu_osci_on                              0x08006ac5   Thumb Code    28  gd32f30x_rcu.o(i.rcu_osci_on)
-    rcu_osci_stab_wait                       0x08006ae5   Thumb Code   266  gd32f30x_rcu.o(i.rcu_osci_stab_wait)
-    rcu_periph_clock_enable                  0x08006bf5   Thumb Code    28  gd32f30x_rcu.o(i.rcu_periph_clock_enable)
-    rcu_periph_reset_disable                 0x08006c15   Thumb Code    28  gd32f30x_rcu.o(i.rcu_periph_reset_disable)
-    rcu_periph_reset_enable                  0x08006c35   Thumb Code    28  gd32f30x_rcu.o(i.rcu_periph_reset_enable)
-    rcu_pll_config                           0x08006c55   Thumb Code    24  gd32f30x_rcu.o(i.rcu_pll_config)
-    rcu_pllpresel_config                     0x08006c75   Thumb Code    18  gd32f30x_rcu.o(i.rcu_pllpresel_config)
-    rcu_predv0_config                        0x08006c8d   Thumb Code    26  gd32f30x_rcu.o(i.rcu_predv0_config)
-    rcu_system_clock_source_config           0x08006cad   Thumb Code    18  gd32f30x_rcu.o(i.rcu_system_clock_source_config)
-    rcu_system_clock_source_get              0x08006cc5   Thumb Code    10  gd32f30x_rcu.o(i.rcu_system_clock_source_get)
-    timer_deinit                             0x08006e5d   Thumb Code   210  gd32f30x_timer.o(i.timer_deinit)
-    timer_enable                             0x08006f39   Thumb Code    10  gd32f30x_timer.o(i.timer_enable)
-    timer_init                               0x08006f45   Thumb Code   122  gd32f30x_timer.o(i.timer_init)
-    timer_interrupt_enable                   0x08006fdd   Thumb Code     8  gd32f30x_timer.o(i.timer_interrupt_enable)
-    timer_interrupt_flag_clear               0x08006fe5   Thumb Code     6  gd32f30x_timer.o(i.timer_interrupt_flag_clear)
-    timer_interrupt_flag_get                 0x08006feb   Thumb Code    24  gd32f30x_timer.o(i.timer_interrupt_flag_get)
-    timer_struct_para_init                   0x08007003   Thumb Code    22  gd32f30x_timer.o(i.timer_struct_para_init)
-    usart_baudrate_set                       0x08007019   Thumb Code   136  gd32f30x_usart.o(i.usart_baudrate_set)
-    usart_data_receive                       0x080070a9   Thumb Code    10  gd32f30x_usart.o(i.usart_data_receive)
-    usart_data_transmit                      0x080070b3   Thumb Code     8  gd32f30x_usart.o(i.usart_data_transmit)
-    usart_deinit                             0x080070bd   Thumb Code   136  gd32f30x_usart.o(i.usart_deinit)
-    usart_enable                             0x0800714d   Thumb Code    10  gd32f30x_usart.o(i.usart_enable)
-    usart_flag_get                           0x08007157   Thumb Code    30  gd32f30x_usart.o(i.usart_flag_get)
-    usart_interrupt_disable                  0x08007175   Thumb Code    26  gd32f30x_usart.o(i.usart_interrupt_disable)
-    usart_interrupt_enable                   0x0800718f   Thumb Code    26  gd32f30x_usart.o(i.usart_interrupt_enable)
-    usart_interrupt_flag_clear               0x080071a9   Thumb Code    26  gd32f30x_usart.o(i.usart_interrupt_flag_clear)
-    usart_interrupt_flag_get                 0x080071c3   Thumb Code    56  gd32f30x_usart.o(i.usart_interrupt_flag_get)
-    usart_parity_config                      0x080071fb   Thumb Code    16  gd32f30x_usart.o(i.usart_parity_config)
-    usart_receive_config                     0x0800720b   Thumb Code    16  gd32f30x_usart.o(i.usart_receive_config)
-    usart_stop_bit_set                       0x0800721b   Thumb Code    16  gd32f30x_usart.o(i.usart_stop_bit_set)
-    usart_transmit_config                    0x0800722b   Thumb Code    16  gd32f30x_usart.o(i.usart_transmit_config)
-    usart_word_length_set                    0x0800723b   Thumb Code    16  gd32f30x_usart.o(i.usart_word_length_set)
-    asc2_1206                                0x0800724a   Data        1140  lcd.o(.constdata)
-    asc2_1608                                0x080076be   Data        1520  lcd.o(.constdata)
-    asc2_2412                                0x08007cae   Data        3420  lcd.o(.constdata)
-    s_arrJpegBackgroundImage                 0x08008eca   Data       37701  jpeg.o(.constdata)
-    s_arrJpegWriteAddrHasFocusImage290x50x24 0x0801220f   Data       12928  jpeg.o(.constdata)
-    s_arrJpegWriteAddrNoFocusImage290x50x24  0x0801548f   Data       12000  jpeg.o(.constdata)
-    s_arrJpegWriteDataHasFocusImage290x50x24 0x0801836f   Data       13239  jpeg.o(.constdata)
-    s_arrJpegWriteDataNoFocusImage290x50x24  0x0801b726   Data       11883  jpeg.o(.constdata)
-    s_arrJpegReadAddrHasFocusImage210x50x24  0x0801e591   Data       14119  jpeg.o(.constdata)
-    s_arrJpegReadAddrNoFocusImage210x50x24   0x08021cb8   Data       12932  jpeg.o(.constdata)
-    s_arrJpegReadLenHasFocusImage210x50x24   0x08024f3c   Data       13876  jpeg.o(.constdata)
-    s_arrJpegReadLenNoFocusImage210x50x24    0x08028570   Data       12998  jpeg.o(.constdata)
-    s_arrJpegTerminalImage430x270x24         0x0802b836   Data       17373  jpeg.o(.constdata)
-    s_arrBmpButton0ReleaseImage65x65x32      0x0802fc13   Data       17038  bmp.o(.constdata)
-    s_arrBmpButton0PressImage65x65x32        0x08033ea1   Data       17038  bmp.o(.constdata)
-    s_arrBmpButton1ReleaseImage130x65x32     0x0803812f   Data       33938  bmp.o(.constdata)
-    s_arrBmpButton1PressImage130x65x32       0x080405c1   Data       33938  bmp.o(.constdata)
-    Region$$Table$$Base                      0x08048b40   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08048b60   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x08006245   Thumb Code    74  main.o(i.main)
+    nvic_irq_enable                          0x0800682d   Thumb Code   186  gd32f30x_misc.o(i.nvic_irq_enable)
+    nvic_priority_group_set                  0x080068f1   Thumb Code    10  gd32f30x_misc.o(i.nvic_priority_group_set)
+    rcu_ahb_clock_config                     0x08006905   Thumb Code    18  gd32f30x_rcu.o(i.rcu_ahb_clock_config)
+    rcu_apb1_clock_config                    0x0800691d   Thumb Code    18  gd32f30x_rcu.o(i.rcu_apb1_clock_config)
+    rcu_apb2_clock_config                    0x08006935   Thumb Code    18  gd32f30x_rcu.o(i.rcu_apb2_clock_config)
+    rcu_clock_freq_get                       0x0800694d   Thumb Code   310  gd32f30x_rcu.o(i.rcu_clock_freq_get)
+    rcu_deinit                               0x08006aa5   Thumb Code    72  gd32f30x_rcu.o(i.rcu_deinit)
+    rcu_flag_get                             0x08006af9   Thumb Code    30  gd32f30x_rcu.o(i.rcu_flag_get)
+    rcu_osci_on                              0x08006b1d   Thumb Code    28  gd32f30x_rcu.o(i.rcu_osci_on)
+    rcu_osci_stab_wait                       0x08006b3d   Thumb Code   266  gd32f30x_rcu.o(i.rcu_osci_stab_wait)
+    rcu_periph_clock_enable                  0x08006c4d   Thumb Code    28  gd32f30x_rcu.o(i.rcu_periph_clock_enable)
+    rcu_periph_reset_disable                 0x08006c6d   Thumb Code    28  gd32f30x_rcu.o(i.rcu_periph_reset_disable)
+    rcu_periph_reset_enable                  0x08006c8d   Thumb Code    28  gd32f30x_rcu.o(i.rcu_periph_reset_enable)
+    rcu_pll_config                           0x08006cad   Thumb Code    24  gd32f30x_rcu.o(i.rcu_pll_config)
+    rcu_pllpresel_config                     0x08006ccd   Thumb Code    18  gd32f30x_rcu.o(i.rcu_pllpresel_config)
+    rcu_predv0_config                        0x08006ce5   Thumb Code    26  gd32f30x_rcu.o(i.rcu_predv0_config)
+    rcu_system_clock_source_config           0x08006d05   Thumb Code    18  gd32f30x_rcu.o(i.rcu_system_clock_source_config)
+    rcu_system_clock_source_get              0x08006d1d   Thumb Code    10  gd32f30x_rcu.o(i.rcu_system_clock_source_get)
+    timer_deinit                             0x08006eb5   Thumb Code   210  gd32f30x_timer.o(i.timer_deinit)
+    timer_enable                             0x08006f91   Thumb Code    10  gd32f30x_timer.o(i.timer_enable)
+    timer_init                               0x08006f9d   Thumb Code   122  gd32f30x_timer.o(i.timer_init)
+    timer_interrupt_enable                   0x08007035   Thumb Code     8  gd32f30x_timer.o(i.timer_interrupt_enable)
+    timer_interrupt_flag_clear               0x0800703d   Thumb Code     6  gd32f30x_timer.o(i.timer_interrupt_flag_clear)
+    timer_interrupt_flag_get                 0x08007043   Thumb Code    24  gd32f30x_timer.o(i.timer_interrupt_flag_get)
+    timer_struct_para_init                   0x0800705b   Thumb Code    22  gd32f30x_timer.o(i.timer_struct_para_init)
+    usart_baudrate_set                       0x08007071   Thumb Code   136  gd32f30x_usart.o(i.usart_baudrate_set)
+    usart_data_receive                       0x08007101   Thumb Code    10  gd32f30x_usart.o(i.usart_data_receive)
+    usart_data_transmit                      0x0800710b   Thumb Code     8  gd32f30x_usart.o(i.usart_data_transmit)
+    usart_deinit                             0x08007115   Thumb Code   136  gd32f30x_usart.o(i.usart_deinit)
+    usart_enable                             0x080071a5   Thumb Code    10  gd32f30x_usart.o(i.usart_enable)
+    usart_flag_get                           0x080071af   Thumb Code    30  gd32f30x_usart.o(i.usart_flag_get)
+    usart_interrupt_disable                  0x080071cd   Thumb Code    26  gd32f30x_usart.o(i.usart_interrupt_disable)
+    usart_interrupt_enable                   0x080071e7   Thumb Code    26  gd32f30x_usart.o(i.usart_interrupt_enable)
+    usart_interrupt_flag_clear               0x08007201   Thumb Code    26  gd32f30x_usart.o(i.usart_interrupt_flag_clear)
+    usart_interrupt_flag_get                 0x0800721b   Thumb Code    56  gd32f30x_usart.o(i.usart_interrupt_flag_get)
+    usart_parity_config                      0x08007253   Thumb Code    16  gd32f30x_usart.o(i.usart_parity_config)
+    usart_receive_config                     0x08007263   Thumb Code    16  gd32f30x_usart.o(i.usart_receive_config)
+    usart_stop_bit_set                       0x08007273   Thumb Code    16  gd32f30x_usart.o(i.usart_stop_bit_set)
+    usart_transmit_config                    0x08007283   Thumb Code    16  gd32f30x_usart.o(i.usart_transmit_config)
+    usart_word_length_set                    0x08007293   Thumb Code    16  gd32f30x_usart.o(i.usart_word_length_set)
+    asc2_1206                                0x080072a2   Data        1140  lcd.o(.constdata)
+    asc2_1608                                0x08007716   Data        1520  lcd.o(.constdata)
+    asc2_2412                                0x08007d06   Data        3420  lcd.o(.constdata)
+    s_arrJpegBackgroundImage                 0x08008f22   Data       37701  jpeg.o(.constdata)
+    s_arrJpegWriteAddrHasFocusImage290x50x24 0x08012267   Data       12928  jpeg.o(.constdata)
+    s_arrJpegWriteAddrNoFocusImage290x50x24  0x080154e7   Data       12000  jpeg.o(.constdata)
+    s_arrJpegWriteDataHasFocusImage290x50x24 0x080183c7   Data       13239  jpeg.o(.constdata)
+    s_arrJpegWriteDataNoFocusImage290x50x24  0x0801b77e   Data       11883  jpeg.o(.constdata)
+    s_arrJpegReadAddrHasFocusImage210x50x24  0x0801e5e9   Data       14119  jpeg.o(.constdata)
+    s_arrJpegReadAddrNoFocusImage210x50x24   0x08021d10   Data       12932  jpeg.o(.constdata)
+    s_arrJpegReadLenHasFocusImage210x50x24   0x08024f94   Data       13876  jpeg.o(.constdata)
+    s_arrJpegReadLenNoFocusImage210x50x24    0x080285c8   Data       12998  jpeg.o(.constdata)
+    s_arrJpegTerminalImage430x270x24         0x0802b88e   Data       17373  jpeg.o(.constdata)
+    s_arrBmpButton0ReleaseImage65x65x32      0x0802fc6b   Data       17038  bmp.o(.constdata)
+    s_arrBmpButton0PressImage65x65x32        0x08033ef9   Data       17038  bmp.o(.constdata)
+    s_arrBmpButton1ReleaseImage130x65x32     0x08038187   Data       33938  bmp.o(.constdata)
+    s_arrBmpButton1PressImage130x65x32       0x08040619   Data       33938  bmp.o(.constdata)
+    Region$$Table$$Base                      0x08048b98   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08048bb8   Number         0  anon$$obj.o(Region$$Table)
     s_iLCDPointColor                         0x20000006   Data           2  lcd.o(.data)
     s_iLCDBackColor                          0x20000008   Data           2  lcd.o(.data)
     s_iSDCardType                            0x20000014   Data           4  sdcardbyspi.o(.data)
     SystemCoreClock                          0x200000ac   Data           4  system_gd32f30x.o(.data)
     __stdout                                 0x200000b0   Data           4  stdout.o(.data)
-    s_structLCDDev                           0x200000b4   Data          14  lcd.o(.bss)
-    s_arrJpegWorkBuf                         0x200000c4   Data        4096  jpeg.o(.bss)
-    __initial_sp                             0x20005620   Data           0  startup_gd32f30x_hd.o(STACK)
+    s_structLCDDev                           0x200002b4   Data          14  lcd.o(.bss)
+    s_arrJpegWorkBuf                         0x200002c4   Data        4096  jpeg.o(.bss)
+    __initial_sp                             0x20005820   Data           0  startup_gd32f30x_hd.o(STACK)
 
 
 
@@ -2233,339 +2238,340 @@ Memory Map of the image
 
   Image Entry point : 0x08000131
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00048c14, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00048c6c, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00048b60, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00048bb8, Max: 0x00080000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x08000000   0x00000130   Data   RO         4483    RESET               startup_gd32f30x_hd.o
-    0x08000130   0x08000130   0x00000000   Code   RO         4488  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x08000130   0x08000130   0x00000004   Code   RO         4758    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x08000134   0x08000134   0x00000004   Code   RO         4761    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x08000138   0x08000138   0x00000000   Code   RO         4763    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x08000138   0x08000138   0x00000000   Code   RO         4765    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x08000138   0x08000138   0x00000008   Code   RO         4766    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x08000140   0x08000140   0x00000000   Code   RO         4768    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x08000140   0x08000140   0x00000000   Code   RO         4770    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x08000140   0x08000140   0x00000004   Code   RO         4759    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
-    0x08000144   0x08000144   0x00000024   Code   RO         4484    .text               startup_gd32f30x_hd.o
-    0x08000168   0x08000168   0x00000062   Code   RO         4775    .text               mc_w.l(uldiv.o)
-    0x080001ca   0x080001ca   0x00000020   Code   RO         4777    .text               mc_w.l(llushr.o)
+    0x08000000   0x08000000   0x00000130   Data   RO         4484    RESET               startup_gd32f30x_hd.o
+    0x08000130   0x08000130   0x00000000   Code   RO         4489  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000130   0x08000130   0x00000004   Code   RO         4759    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x08000134   0x08000134   0x00000004   Code   RO         4762    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x08000138   0x08000138   0x00000000   Code   RO         4764    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x08000138   0x08000138   0x00000000   Code   RO         4766    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x08000138   0x08000138   0x00000008   Code   RO         4767    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000140   0x08000140   0x00000000   Code   RO         4769    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x08000140   0x08000140   0x00000000   Code   RO         4771    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x08000140   0x08000140   0x00000004   Code   RO         4760    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000144   0x08000144   0x00000024   Code   RO         4485    .text               startup_gd32f30x_hd.o
+    0x08000168   0x08000168   0x00000062   Code   RO         4776    .text               mc_w.l(uldiv.o)
+    0x080001ca   0x080001ca   0x00000020   Code   RO         4778    .text               mc_w.l(llushr.o)
     0x080001ea   0x080001ea   0x00000002   PAD
-    0x080001ec   0x080001ec   0x00000024   Code   RO         4790    .text               mc_w.l(init.o)
-    0x08000210   0x08000210   0x0000001e   Code   RO         4792    .text               mc_w.l(llshl.o)
-    0x0800022e   0x0800022e   0x00000012   Code   RO          826    i.Abs               touch.o
-    0x08000240   0x08000240   0x00000078   Code   RO         1353    i.AddGUILineEditText  guilineedit.o
-    0x080002b8   0x080002b8   0x000001f4   Code   RO          608    i.BMPDisplayInFlash  bmp.o
-    0x080004ac   0x080004ac   0x00000004   Code   RO         4279    i.BusFault_Handler  gd32f30x_it.o
-    0x080004b0   0x080004b0   0x00000030   Code   RO         1310    i.ButtonPressCallback  guibutton.o
-    0x080004e0   0x080004e0   0x00000088   Code   RO          609    i.CalcAlphaRGB555   bmp.o
-    0x08000568   0x08000568   0x0000002a   Code   RO         1090    i.CallBackProc      buttonwidget.o
-    0x08000592   0x08000592   0x00000010   Code   RO         1149    i.CallBackProc      lineeditwidget.o
-    0x080005a2   0x080005a2   0x000000b8   Code   RO         1354    i.CharToU32         guilineedit.o
+    0x080001ec   0x080001ec   0x00000024   Code   RO         4791    .text               mc_w.l(init.o)
+    0x08000210   0x08000210   0x0000001e   Code   RO         4793    .text               mc_w.l(llshl.o)
+    0x0800022e   0x0800022e   0x00000012   Code   RO          830    i.Abs               touch.o
+    0x08000240   0x08000240   0x00000078   Code   RO         1354    i.AddGUILineEditText  guilineedit.o
+    0x080002b8   0x080002b8   0x000001f4   Code   RO          612    i.BMPDisplayInFlash  bmp.o
+    0x080004ac   0x080004ac   0x00000004   Code   RO         4280    i.BusFault_Handler  gd32f30x_it.o
+    0x080004b0   0x080004b0   0x00000030   Code   RO         1311    i.ButtonPressCallback  guibutton.o
+    0x080004e0   0x080004e0   0x00000088   Code   RO          613    i.CalcAlphaRGB555   bmp.o
+    0x08000568   0x08000568   0x0000002a   Code   RO         1091    i.CallBackProc      buttonwidget.o
+    0x08000592   0x08000592   0x00000010   Code   RO         1150    i.CallBackProc      lineeditwidget.o
+    0x080005a2   0x080005a2   0x000000b8   Code   RO         1355    i.CharToU32         guilineedit.o
     0x0800065a   0x0800065a   0x00000002   PAD
-    0x0800065c   0x0800065c   0x0000004c   Code   RO         1418    i.ClearGUITerminal  guiterminal.o
-    0x080006a8   0x080006a8   0x00000020   Code   RO         1150    i.ClearLineEditWidgetFocus  lineeditwidget.o
-    0x080006c8   0x080006c8   0x0000000c   Code   RO         1541    i.Clr1SecFlag       timer.o
-    0x080006d4   0x080006d4   0x0000000c   Code   RO         1542    i.Clr1msFlag        timer.o
-    0x080006e0   0x080006e0   0x0000000c   Code   RO         1543    i.Clr2msFlag        timer.o
-    0x080006ec   0x080006ec   0x00000070   Code   RO         1768    i.ConfigBank0Region1  exmc.o
-    0x0800075c   0x0800075c   0x0000024c   Code   RO         1769    i.ConfigEXMCGPIO    exmc.o
-    0x080009a8   0x080009a8   0x00000068   Code   RO          755    i.ConfigGT1151QAddr  gt1151q.o
-    0x08000a10   0x08000a10   0x00000050   Code   RO          756    i.ConfigGT1151QGPIO  gt1151q.o
-    0x08000a60   0x08000a60   0x00000048   Code   RO          213    i.ConfigLEDGPIO     led.o
-    0x08000aa8   0x08000aa8   0x0000000c   Code   RO         4351    i.ConfigNVIC        nvic.o
-    0x08000ab4   0x08000ab4   0x00000068   Code   RO         1512    i.ConfigRCU         rcu.o
-    0x08000b1c   0x08000b1c   0x00000034   Code   RO          757    i.ConfigSDAMode     gt1151q.o
-    0x08000b50   0x08000b50   0x00000050   Code   RO         1544    i.ConfigTimer2      timer.o
-    0x08000ba0   0x08000ba0   0x00000050   Code   RO         1545    i.ConfigTimer5      timer.o
-    0x08000bf0   0x08000bf0   0x000000a0   Code   RO         1688    i.ConfigUART        uart0.o
-    0x08000c90   0x08000c90   0x00000028   Code   RO         1091    i.CreateButtonWidget  buttonwidget.o
-    0x08000cb8   0x08000cb8   0x00000018   Code   RO         1151    i.CreateLineEditWidget  lineeditwidget.o
-    0x08000cd0   0x08000cd0   0x00000044   Code   RO         1632    i.DeQueue           queue.o
-    0x08000d14   0x08000d14   0x00000002   Code   RO         4280    i.DebugMon_Handler  gd32f30x_it.o
-    0x08000d16   0x08000d16   0x0000000c   Code   RO          758    i.Delay             gt1151q.o
+    0x0800065c   0x0800065c   0x0000004c   Code   RO         1419    i.ClearGUITerminal  guiterminal.o
+    0x080006a8   0x080006a8   0x00000020   Code   RO         1151    i.ClearLineEditWidgetFocus  lineeditwidget.o
+    0x080006c8   0x080006c8   0x0000000c   Code   RO         1542    i.Clr1SecFlag       timer.o
+    0x080006d4   0x080006d4   0x0000000c   Code   RO         1543    i.Clr1msFlag        timer.o
+    0x080006e0   0x080006e0   0x0000000c   Code   RO         1544    i.Clr2msFlag        timer.o
+    0x080006ec   0x080006ec   0x00000070   Code   RO         1769    i.ConfigBank0Region1  exmc.o
+    0x0800075c   0x0800075c   0x0000024c   Code   RO         1770    i.ConfigEXMCGPIO    exmc.o
+    0x080009a8   0x080009a8   0x00000068   Code   RO          759    i.ConfigGT1151QAddr  gt1151q.o
+    0x08000a10   0x08000a10   0x00000050   Code   RO          760    i.ConfigGT1151QGPIO  gt1151q.o
+    0x08000a60   0x08000a60   0x00000048   Code   RO          217    i.ConfigLEDGPIO     led.o
+    0x08000aa8   0x08000aa8   0x0000000c   Code   RO         4352    i.ConfigNVIC        nvic.o
+    0x08000ab4   0x08000ab4   0x00000068   Code   RO         1513    i.ConfigRCU         rcu.o
+    0x08000b1c   0x08000b1c   0x00000034   Code   RO          761    i.ConfigSDAMode     gt1151q.o
+    0x08000b50   0x08000b50   0x00000050   Code   RO         1545    i.ConfigTimer2      timer.o
+    0x08000ba0   0x08000ba0   0x00000050   Code   RO         1546    i.ConfigTimer5      timer.o
+    0x08000bf0   0x08000bf0   0x000000a0   Code   RO         1689    i.ConfigUART        uart0.o
+    0x08000c90   0x08000c90   0x00000028   Code   RO         1092    i.CreateButtonWidget  buttonwidget.o
+    0x08000cb8   0x08000cb8   0x00000018   Code   RO         1152    i.CreateLineEditWidget  lineeditwidget.o
+    0x08000cd0   0x08000cd0   0x00000044   Code   RO         1633    i.DeQueue           queue.o
+    0x08000d14   0x08000d14   0x00000002   Code   RO         4281    i.DebugMon_Handler  gd32f30x_it.o
+    0x08000d16   0x08000d16   0x0000000c   Code   RO          762    i.Delay             gt1151q.o
     0x08000d22   0x08000d22   0x00000002   PAD
-    0x08000d24   0x08000d24   0x00000018   Code   RO         4380    i.DelayNms          systick.o
-    0x08000d3c   0x08000d3c   0x0000001a   Code   RO         4381    i.DelayNus          systick.o
+    0x08000d24   0x08000d24   0x00000018   Code   RO         4381    i.DelayNms          systick.o
+    0x08000d3c   0x08000d3c   0x0000001a   Code   RO         4382    i.DelayNus          systick.o
     0x08000d56   0x08000d56   0x00000002   PAD
-    0x08000d58   0x08000d58   0x00000064   Code   RO         1355    i.DelectGUILineEditTextChar  guilineedit.o
-    0x08000dbc   0x08000dbc   0x00000018   Code   RO          869    i.DisSelect         sdcardbyspi.o
-    0x08000dd4   0x08000dd4   0x00000018   Code   RO          610    i.DisplayBMP        bmp.o
-    0x08000dec   0x08000dec   0x00000028   Code   RO         1419    i.DisplayBackground  guiterminal.o
-    0x08000e14   0x08000e14   0x00000020   Code   RO         1475    i.DisplayBackground  guitop.o
-    0x08000e34   0x08000e34   0x00000054   Code   RO          557    i.DisplayJPEGInFlash  jpeg.o
-    0x08000e88   0x08000e88   0x000000c8   Code   RO         1092    i.DrawBackground    buttonwidget.o
-    0x08000f50   0x08000f50   0x00000074   Code   RO         1152    i.DrawBackground    lineeditwidget.o
-    0x08000fc4   0x08000fc4   0x0000003a   Code   RO         1093    i.DrawText          buttonwidget.o
-    0x08000ffe   0x08000ffe   0x0000003a   Code   RO         1153    i.DrawText          lineeditwidget.o
-    0x08001038   0x08001038   0x00000048   Code   RO         1633    i.EnQueue           queue.o
-    0x08001080   0x08001080   0x00000024   Code   RO          870    i.EnSelect          sdcardbyspi.o
-    0x080010a4   0x080010a4   0x00000034   Code   RO         1220    i.GUIDrawBackground  guiplatform.o
-    0x080010d8   0x080010d8   0x00000054   Code   RO         1221    i.GUIDrawChar       guiplatform.o
-    0x0800112c   0x0800112c   0x0000002c   Code   RO         1222    i.GUIDrawImage      guiplatform.o
-    0x08001158   0x08001158   0x00000058   Code   RO         1225    i.GUIDrawTextLine   guiplatform.o
-    0x080011b0   0x080011b0   0x00000026   Code   RO         1226    i.GUIFillColor      guiplatform.o
-    0x080011d6   0x080011d6   0x00000054   Code   RO         1228    i.GUIGetTouch       guiplatform.o
-    0x0800122a   0x0800122a   0x00000010   Code   RO         1229    i.GUIReadPoint      guiplatform.o
-    0x0800123a   0x0800123a   0x0000004e   Code   RO         1230    i.GUISaveBackground  guiplatform.o
-    0x08001288   0x08001288   0x000000b4   Code   RO         1476    i.GUITask           guitop.o
-    0x0800133c   0x0800133c   0x0000000c   Code   RO         1546    i.Get1SecFlag       timer.o
-    0x08001348   0x08001348   0x0000000c   Code   RO         1547    i.Get1msFlag        timer.o
-    0x08001354   0x08001354   0x0000000c   Code   RO         1548    i.Get2msFlag        timer.o
-    0x08001360   0x08001360   0x0000001c   Code   RO         1231    i.GetFontWidth      guiplatform.o
-    0x0800137c   0x0800137c   0x00000050   Code   RO         1356    i.GetGUILineEditRusult  guilineedit.o
-    0x080013cc   0x080013cc   0x000001c0   Code   RO          611    i.GetHeaderInFlash  bmp.o
-    0x0800158c   0x0800158c   0x00000064   Code   RO          612    i.GetLineInFlash    bmp.o
-    0x080015f0   0x080015f0   0x00000026   Code   RO          871    i.GetResponse       sdcardbyspi.o
+    0x08000d58   0x08000d58   0x00000064   Code   RO         1356    i.DelectGUILineEditTextChar  guilineedit.o
+    0x08000dbc   0x08000dbc   0x00000018   Code   RO          873    i.DisSelect         sdcardbyspi.o
+    0x08000dd4   0x08000dd4   0x00000018   Code   RO          614    i.DisplayBMP        bmp.o
+    0x08000dec   0x08000dec   0x00000028   Code   RO         1420    i.DisplayBackground  guiterminal.o
+    0x08000e14   0x08000e14   0x00000020   Code   RO         1476    i.DisplayBackground  guitop.o
+    0x08000e34   0x08000e34   0x00000054   Code   RO          561    i.DisplayJPEGInFlash  jpeg.o
+    0x08000e88   0x08000e88   0x000000c8   Code   RO         1093    i.DrawBackground    buttonwidget.o
+    0x08000f50   0x08000f50   0x00000074   Code   RO         1153    i.DrawBackground    lineeditwidget.o
+    0x08000fc4   0x08000fc4   0x0000003a   Code   RO         1094    i.DrawText          buttonwidget.o
+    0x08000ffe   0x08000ffe   0x0000003a   Code   RO         1154    i.DrawText          lineeditwidget.o
+    0x08001038   0x08001038   0x00000048   Code   RO         1634    i.EnQueue           queue.o
+    0x08001080   0x08001080   0x00000024   Code   RO          874    i.EnSelect          sdcardbyspi.o
+    0x080010a4   0x080010a4   0x00000034   Code   RO         1221    i.GUIDrawBackground  guiplatform.o
+    0x080010d8   0x080010d8   0x00000054   Code   RO         1222    i.GUIDrawChar       guiplatform.o
+    0x0800112c   0x0800112c   0x0000002c   Code   RO         1223    i.GUIDrawImage      guiplatform.o
+    0x08001158   0x08001158   0x00000058   Code   RO         1226    i.GUIDrawTextLine   guiplatform.o
+    0x080011b0   0x080011b0   0x00000026   Code   RO         1227    i.GUIFillColor      guiplatform.o
+    0x080011d6   0x080011d6   0x00000054   Code   RO         1229    i.GUIGetTouch       guiplatform.o
+    0x0800122a   0x0800122a   0x00000010   Code   RO         1230    i.GUIReadPoint      guiplatform.o
+    0x0800123a   0x0800123a   0x0000004e   Code   RO         1231    i.GUISaveBackground  guiplatform.o
+    0x08001288   0x08001288   0x000000b4   Code   RO         1477    i.GUITask           guitop.o
+    0x0800133c   0x0800133c   0x0000000c   Code   RO         1547    i.Get1SecFlag       timer.o
+    0x08001348   0x08001348   0x0000000c   Code   RO         1548    i.Get1msFlag        timer.o
+    0x08001354   0x08001354   0x0000000c   Code   RO         1549    i.Get2msFlag        timer.o
+    0x08001360   0x08001360   0x0000001c   Code   RO         1232    i.GetFontWidth      guiplatform.o
+    0x0800137c   0x0800137c   0x00000050   Code   RO         1357    i.GetGUILineEditRusult  guilineedit.o
+    0x080013cc   0x080013cc   0x000001c0   Code   RO          615    i.GetHeaderInFlash  bmp.o
+    0x0800158c   0x0800158c   0x00000064   Code   RO          616    i.GetLineInFlash    bmp.o
+    0x080015f0   0x080015f0   0x00000026   Code   RO          875    i.GetResponse       sdcardbyspi.o
     0x08001616   0x08001616   0x00000002   PAD
-    0x08001618   0x08001618   0x00000018   Code   RO          759    i.GetSDA            gt1151q.o
-    0x08001630   0x08001630   0x00000008   Code   RO          827    i.GetTouchDev       touch.o
-    0x08001638   0x08001638   0x00000004   Code   RO         4281    i.HardFault_Handler  gd32f30x_it.o
-    0x0800163c   0x0800163c   0x00000036   Code   RO          668    i.IICCommonEnd      iiccommon.o
-    0x08001672   0x08001672   0x00000034   Code   RO          669    i.IICCommonReadACK  iiccommon.o
-    0x080016a6   0x080016a6   0x000000b2   Code   RO          671    i.IICCommonReadBytesEx  iiccommon.o
-    0x08001758   0x08001758   0x00000056   Code   RO          672    i.IICCommonReadOneByte  iiccommon.o
-    0x080017ae   0x080017ae   0x00000036   Code   RO          673    i.IICCommonSendAck  iiccommon.o
-    0x080017e4   0x080017e4   0x00000036   Code   RO          674    i.IICCommonSendNAck  iiccommon.o
-    0x0800181a   0x0800181a   0x00000062   Code   RO          675    i.IICCommonSendOneByte  iiccommon.o
-    0x0800187c   0x0800187c   0x0000004e   Code   RO          676    i.IICCommonStart    iiccommon.o
-    0x080018ca   0x080018ca   0x00000086   Code   RO          678    i.IICCommonWriteBytesEx  iiccommon.o
-    0x08001950   0x08001950   0x00000002   Code   RO          613    i.InitBMP           bmp.o
+    0x08001618   0x08001618   0x00000018   Code   RO          763    i.GetSDA            gt1151q.o
+    0x08001630   0x08001630   0x00000008   Code   RO          831    i.GetTouchDev       touch.o
+    0x08001638   0x08001638   0x00000004   Code   RO         4282    i.HardFault_Handler  gd32f30x_it.o
+    0x0800163c   0x0800163c   0x00000036   Code   RO          672    i.IICCommonEnd      iiccommon.o
+    0x08001672   0x08001672   0x00000034   Code   RO          673    i.IICCommonReadACK  iiccommon.o
+    0x080016a6   0x080016a6   0x000000b2   Code   RO          675    i.IICCommonReadBytesEx  iiccommon.o
+    0x08001758   0x08001758   0x00000056   Code   RO          676    i.IICCommonReadOneByte  iiccommon.o
+    0x080017ae   0x080017ae   0x00000036   Code   RO          677    i.IICCommonSendAck  iiccommon.o
+    0x080017e4   0x080017e4   0x00000036   Code   RO          678    i.IICCommonSendNAck  iiccommon.o
+    0x0800181a   0x0800181a   0x00000062   Code   RO          679    i.IICCommonSendOneByte  iiccommon.o
+    0x0800187c   0x0800187c   0x0000004e   Code   RO          680    i.IICCommonStart    iiccommon.o
+    0x080018ca   0x080018ca   0x00000086   Code   RO          682    i.IICCommonWriteBytesEx  iiccommon.o
+    0x08001950   0x08001950   0x00000002   Code   RO          617    i.InitBMP           bmp.o
     0x08001952   0x08001952   0x00000002   PAD
-    0x08001954   0x08001954   0x0000007c   Code   RO          872    i.InitBSP           sdcardbyspi.o
-    0x080019d0   0x080019d0   0x00000058   Code   RO         1094    i.InitButtonWidgetStruct  buttonwidget.o
-    0x08001a28   0x08001a28   0x0000000c   Code   RO         1770    i.InitEXMC          exmc.o
-    0x08001a34   0x08001a34   0x000000a0   Code   RO          760    i.InitGT1151Q       gt1151q.o
-    0x08001ad4   0x08001ad4   0x00000040   Code   RO         1477    i.InitGUI           guitop.o
-    0x08001b14   0x08001b14   0x00000240   Code   RO         1311    i.InitGUIButton     guibutton.o
-    0x08001d54   0x08001d54   0x00000224   Code   RO         1357    i.InitGUILineEdit   guilineedit.o
-    0x08001f78   0x08001f78   0x00000060   Code   RO         1420    i.InitGUITerminal   guiterminal.o
+    0x08001954   0x08001954   0x0000007c   Code   RO          876    i.InitBSP           sdcardbyspi.o
+    0x080019d0   0x080019d0   0x00000058   Code   RO         1095    i.InitButtonWidgetStruct  buttonwidget.o
+    0x08001a28   0x08001a28   0x0000000c   Code   RO         1771    i.InitEXMC          exmc.o
+    0x08001a34   0x08001a34   0x000000a0   Code   RO          764    i.InitGT1151Q       gt1151q.o
+    0x08001ad4   0x08001ad4   0x00000040   Code   RO         1478    i.InitGUI           guitop.o
+    0x08001b14   0x08001b14   0x00000240   Code   RO         1312    i.InitGUIButton     guibutton.o
+    0x08001d54   0x08001d54   0x00000224   Code   RO         1358    i.InitGUILineEdit   guilineedit.o
+    0x08001f78   0x08001f78   0x00000060   Code   RO         1421    i.InitGUITerminal   guiterminal.o
     0x08001fd8   0x08001fd8   0x00000020   Code   RO            4    i.InitHardware      main.o
-    0x08001ff8   0x08001ff8   0x00000002   Code   RO          558    i.InitJPEG          jpeg.o
+    0x08001ff8   0x08001ff8   0x00000002   Code   RO          562    i.InitJPEG          jpeg.o
     0x08001ffa   0x08001ffa   0x00000002   PAD
-    0x08001ffc   0x08001ffc   0x00001348   Code   RO          255    i.InitLCD           lcd.o
-    0x08003344   0x08003344   0x00000008   Code   RO          214    i.InitLED           led.o
-    0x0800334c   0x0800334c   0x00000042   Code   RO         1154    i.InitLineEditWidgetStruct  lineeditwidget.o
-    0x0800338e   0x0800338e   0x00000008   Code   RO         4352    i.InitNVIC          nvic.o
-    0x08003396   0x08003396   0x00000024   Code   RO         1634    i.InitQueue         queue.o
-    0x080033ba   0x080033ba   0x00000008   Code   RO         1513    i.InitRCU           rcu.o
+    0x08001ffc   0x08001ffc   0x00001348   Code   RO          259    i.InitLCD           lcd.o
+    0x08003344   0x08003344   0x00000008   Code   RO          218    i.InitLED           led.o
+    0x0800334c   0x0800334c   0x00000042   Code   RO         1155    i.InitLineEditWidgetStruct  lineeditwidget.o
+    0x0800338e   0x0800338e   0x00000008   Code   RO         4353    i.InitNVIC          nvic.o
+    0x08003396   0x08003396   0x00000024   Code   RO         1635    i.InitQueue         queue.o
+    0x080033ba   0x080033ba   0x00000008   Code   RO         1514    i.InitRCU           rcu.o
     0x080033c2   0x080033c2   0x00000002   PAD
-    0x080033c4   0x080033c4   0x00000170   Code   RO          990    i.InitReadWriteSDCard  readwritesdcard.o
-    0x08003534   0x08003534   0x00000188   Code   RO          873    i.InitSDCard        sdcardbyspi.o
+    0x080033c4   0x080033c4   0x00000170   Code   RO          991    i.InitReadWriteSDCard  readwritesdcard.o
+    0x08003534   0x08003534   0x00000188   Code   RO          877    i.InitSDCard        sdcardbyspi.o
     0x080036bc   0x080036bc   0x0000001c   Code   RO            5    i.InitSoftware      main.o
-    0x080036d8   0x080036d8   0x00000050   Code   RO         4382    i.InitSysTick       systick.o
-    0x08003728   0x08003728   0x00000024   Code   RO         1550    i.InitTimer         timer.o
-    0x0800374c   0x0800374c   0x00000050   Code   RO          828    i.InitTouch         touch.o
-    0x0800379c   0x0800379c   0x00000010   Code   RO         1690    i.InitUART0         uart0.o
-    0x080037ac   0x080037ac   0x00000040   Code   RO         1691    i.InitUARTBuf       uart0.o
-    0x080037ec   0x080037ec   0x00000058   Code   RO         1095    i.IsButtonPress     buttonwidget.o
-    0x08003844   0x08003844   0x00000056   Code   RO         1155    i.IsPress           lineeditwidget.o
-    0x0800389a   0x0800389a   0x0000004c   Code   RO          559    i.JpegInfunc        jpeg.o
-    0x080038e6   0x080038e6   0x0000004c   Code   RO          560    i.JpegOutfunc       jpeg.o
+    0x080036d8   0x080036d8   0x00000050   Code   RO         4383    i.InitSysTick       systick.o
+    0x08003728   0x08003728   0x00000024   Code   RO         1551    i.InitTimer         timer.o
+    0x0800374c   0x0800374c   0x00000050   Code   RO          832    i.InitTouch         touch.o
+    0x0800379c   0x0800379c   0x00000010   Code   RO         1691    i.InitUART0         uart0.o
+    0x080037ac   0x080037ac   0x00000040   Code   RO         1692    i.InitUARTBuf       uart0.o
+    0x080037ec   0x080037ec   0x00000058   Code   RO         1096    i.IsButtonPress     buttonwidget.o
+    0x08003844   0x08003844   0x00000056   Code   RO         1156    i.IsPress           lineeditwidget.o
+    0x0800389a   0x0800389a   0x0000004c   Code   RO          563    i.JpegInfunc        jpeg.o
+    0x080038e6   0x080038e6   0x0000004c   Code   RO          564    i.JpegOutfunc       jpeg.o
     0x08003932   0x08003932   0x00000002   PAD
-    0x08003934   0x08003934   0x00000064   Code   RO          257    i.LCDClear          lcd.o
-    0x08003998   0x08003998   0x0000005e   Code   RO          258    i.LCDColorFill      lcd.o
+    0x08003934   0x08003934   0x00000064   Code   RO          261    i.LCDClear          lcd.o
+    0x08003998   0x08003998   0x0000005e   Code   RO          262    i.LCDColorFill      lcd.o
     0x080039f6   0x080039f6   0x00000002   PAD
-    0x080039f8   0x080039f8   0x000000c8   Code   RO          259    i.LCDDisplayDir     lcd.o
-    0x08003ac0   0x08003ac0   0x00000024   Code   RO          264    i.LCDDrawPoint      lcd.o
-    0x08003ae4   0x08003ae4   0x0000009c   Code   RO          266    i.LCDFastDrawPoint  lcd.o
-    0x08003b80   0x08003b80   0x00000052   Code   RO          267    i.LCDFill           lcd.o
-    0x08003bd2   0x08003bd2   0x00000010   Code   RO          269    i.LCDReadData       lcd.o
+    0x080039f8   0x080039f8   0x000000c8   Code   RO          263    i.LCDDisplayDir     lcd.o
+    0x08003ac0   0x08003ac0   0x00000024   Code   RO          268    i.LCDDrawPoint      lcd.o
+    0x08003ae4   0x08003ae4   0x0000009c   Code   RO          270    i.LCDFastDrawPoint  lcd.o
+    0x08003b80   0x08003b80   0x00000052   Code   RO          271    i.LCDFill           lcd.o
+    0x08003bd2   0x08003bd2   0x00000010   Code   RO          273    i.LCDReadData       lcd.o
     0x08003be2   0x08003be2   0x00000002   PAD
-    0x08003be4   0x08003be4   0x000000cc   Code   RO          270    i.LCDReadPoint      lcd.o
-    0x08003cb0   0x08003cb0   0x00000218   Code   RO          273    i.LCDScanDir        lcd.o
-    0x08003ec8   0x08003ec8   0x00000010   Code   RO          274    i.LCDSendWriteGramCMD  lcd.o
-    0x08003ed8   0x08003ed8   0x00000090   Code   RO          275    i.LCDSetCursor      lcd.o
-    0x08003f68   0x08003f68   0x00000128   Code   RO          277    i.LCDShowChar       lcd.o
-    0x08004090   0x08004090   0x00000066   Code   RO          279    i.LCDShowString     lcd.o
-    0x080040f6   0x080040f6   0x00000008   Code   RO          281    i.LCDWriteCMD       lcd.o
-    0x080040fe   0x080040fe   0x00000008   Code   RO          282    i.LCDWriteData      lcd.o
-    0x08004106   0x08004106   0x0000000a   Code   RO          284    i.LCDWriteReg       lcd.o
-    0x08004110   0x08004110   0x00000044   Code   RO          215    i.LEDCtrl           led.o
-    0x08004154   0x08004154   0x0000006c   Code   RO          216    i.LEDFlicker        led.o
-    0x080041c0   0x080041c0   0x0000002c   Code   RO         1358    i.LineEditPressCallback  guilineedit.o
-    0x080041ec   0x080041ec   0x00000004   Code   RO         4282    i.MemManage_Handler  gd32f30x_it.o
-    0x080041f0   0x080041f0   0x00000002   Code   RO         4283    i.NMI_Handler       gd32f30x_it.o
-    0x080041f2   0x080041f2   0x00000002   Code   RO         4284    i.PendSV_Handler    gd32f30x_it.o
+    0x08003be4   0x08003be4   0x000000cc   Code   RO          274    i.LCDReadPoint      lcd.o
+    0x08003cb0   0x08003cb0   0x00000218   Code   RO          277    i.LCDScanDir        lcd.o
+    0x08003ec8   0x08003ec8   0x00000010   Code   RO          278    i.LCDSendWriteGramCMD  lcd.o
+    0x08003ed8   0x08003ed8   0x00000090   Code   RO          279    i.LCDSetCursor      lcd.o
+    0x08003f68   0x08003f68   0x00000128   Code   RO          281    i.LCDShowChar       lcd.o
+    0x08004090   0x08004090   0x00000066   Code   RO          283    i.LCDShowString     lcd.o
+    0x080040f6   0x080040f6   0x00000008   Code   RO          285    i.LCDWriteCMD       lcd.o
+    0x080040fe   0x080040fe   0x00000008   Code   RO          286    i.LCDWriteData      lcd.o
+    0x08004106   0x08004106   0x0000000a   Code   RO          288    i.LCDWriteReg       lcd.o
+    0x08004110   0x08004110   0x00000044   Code   RO          219    i.LEDCtrl           led.o
+    0x08004154   0x08004154   0x0000006c   Code   RO          220    i.LEDFlicker        led.o
+    0x080041c0   0x080041c0   0x0000002c   Code   RO         1359    i.LineEditPressCallback  guilineedit.o
+    0x080041ec   0x080041ec   0x00000004   Code   RO         4283    i.MemManage_Handler  gd32f30x_it.o
+    0x080041f0   0x080041f0   0x00000002   Code   RO         4284    i.NMI_Handler       gd32f30x_it.o
+    0x080041f2   0x080041f2   0x00000002   Code   RO         4285    i.PendSV_Handler    gd32f30x_it.o
     0x080041f4   0x080041f4   0x0000000e   Code   RO            6    i.Proc1SecTask      main.o
     0x08004202   0x08004202   0x00000002   PAD
     0x08004204   0x08004204   0x00000030   Code   RO            7    i.Proc1msTask       main.o
     0x08004234   0x08004234   0x00000034   Code   RO            8    i.Proc2msTask       main.o
-    0x08004268   0x08004268   0x0000000e   Code   RO         1635    i.QueueEmpty        queue.o
+    0x08004268   0x08004268   0x0000000e   Code   RO         1636    i.QueueEmpty        queue.o
     0x08004276   0x08004276   0x00000002   PAD
-    0x08004278   0x08004278   0x00000054   Code   RO          991    i.Read              readwritesdcard.o
-    0x080042cc   0x080042cc   0x0000010c   Code   RO          992    i.ReadSDCard        readwritesdcard.o
-    0x080043d8   0x080043d8   0x0000001c   Code   RO         1692    i.ReadSendBuf       uart0.o
-    0x080043f4   0x080043f4   0x0000006c   Code   RO          874    i.ReadWriteByte     sdcardbyspi.o
-    0x08004460   0x08004460   0x00000084   Code   RO          993    i.ReadWriteSDCardTask  readwritesdcard.o
-    0x080044e4   0x080044e4   0x00000036   Code   RO          875    i.RecvData          sdcardbyspi.o
+    0x08004278   0x08004278   0x00000054   Code   RO          992    i.Read              readwritesdcard.o
+    0x080042cc   0x080042cc   0x0000010c   Code   RO          993    i.ReadSDCard        readwritesdcard.o
+    0x080043d8   0x080043d8   0x0000001c   Code   RO         1693    i.ReadSendBuf       uart0.o
+    0x080043f4   0x080043f4   0x0000006c   Code   RO          878    i.ReadWriteByte     sdcardbyspi.o
+    0x08004460   0x08004460   0x00000084   Code   RO          994    i.ReadWriteSDCardTask  readwritesdcard.o
+    0x080044e4   0x080044e4   0x00000036   Code   RO          879    i.RecvData          sdcardbyspi.o
     0x0800451a   0x0800451a   0x00000002   PAD
-    0x0800451c   0x0800451c   0x00000018   Code   RO          876    i.SDDetect          sdcardbyspi.o
-    0x08004534   0x08004534   0x0000002a   Code   RO          878    i.SDGetCSD          sdcardbyspi.o
-    0x0800455e   0x0800455e   0x00000076   Code   RO          879    i.SDGetSectorCount  sdcardbyspi.o
-    0x080045d4   0x080045d4   0x00000074   Code   RO          880    i.SDReadSector      sdcardbyspi.o
-    0x08004648   0x08004648   0x00000090   Code   RO          881    i.SDWriteSector     sdcardbyspi.o
-    0x080046d8   0x080046d8   0x00000002   Code   RO         4285    i.SVC_Handler       gd32f30x_it.o
-    0x080046da   0x080046da   0x00000062   Code   RO         1096    i.ScanButtonWidget  buttonwidget.o
-    0x0800473c   0x0800473c   0x00000124   Code   RO          761    i.ScanGT1151Q       gt1151q.o
-    0x08004860   0x08004860   0x0000003c   Code   RO         1312    i.ScanGUIButton     guibutton.o
-    0x0800489c   0x0800489c   0x00000020   Code   RO         1359    i.ScanGUILineEdit   guilineedit.o
-    0x080048bc   0x080048bc   0x0000002e   Code   RO         1156    i.ScanLineEditWidget  lineeditwidget.o
+    0x0800451c   0x0800451c   0x00000018   Code   RO          880    i.SDDetect          sdcardbyspi.o
+    0x08004534   0x08004534   0x0000002a   Code   RO          882    i.SDGetCSD          sdcardbyspi.o
+    0x0800455e   0x0800455e   0x00000076   Code   RO          883    i.SDGetSectorCount  sdcardbyspi.o
+    0x080045d4   0x080045d4   0x00000074   Code   RO          884    i.SDReadSector      sdcardbyspi.o
+    0x08004648   0x08004648   0x00000090   Code   RO          885    i.SDWriteSector     sdcardbyspi.o
+    0x080046d8   0x080046d8   0x00000002   Code   RO         4286    i.SVC_Handler       gd32f30x_it.o
+    0x080046da   0x080046da   0x00000062   Code   RO         1097    i.ScanButtonWidget  buttonwidget.o
+    0x0800473c   0x0800473c   0x00000124   Code   RO          765    i.ScanGT1151Q       gt1151q.o
+    0x08004860   0x08004860   0x0000003c   Code   RO         1313    i.ScanGUIButton     guibutton.o
+    0x0800489c   0x0800489c   0x00000020   Code   RO         1360    i.ScanGUILineEdit   guilineedit.o
+    0x080048bc   0x080048bc   0x0000002e   Code   RO         1157    i.ScanLineEditWidget  lineeditwidget.o
     0x080048ea   0x080048ea   0x00000002   PAD
-    0x080048ec   0x080048ec   0x0000021c   Code   RO          829    i.ScanTouch         touch.o
-    0x08004b08   0x08004b08   0x00000052   Code   RO          882    i.SendBlock         sdcardbyspi.o
-    0x08004b5a   0x08004b5a   0x00000074   Code   RO          883    i.SendCmd           sdcardbyspi.o
-    0x08004bce   0x08004bce   0x0000001e   Code   RO         1157    i.SetLineEditWidgetText  lineeditwidget.o
-    0x08004bec   0x08004bec   0x00000020   Code   RO          762    i.SetSCL            gt1151q.o
-    0x08004c0c   0x08004c0c   0x00000020   Code   RO          763    i.SetSDA            gt1151q.o
-    0x08004c2c   0x08004c2c   0x00000002   Code   RO          884    i.SetSpeedHigh      sdcardbyspi.o
-    0x08004c2e   0x08004c2e   0x00000002   Code   RO          885    i.SetSpeedLow       sdcardbyspi.o
-    0x08004c30   0x08004c30   0x000000b8   Code   RO         1421    i.ShowString        guiterminal.o
-    0x08004ce8   0x08004ce8   0x00000084   Code   RO         1422    i.ShowStringLineInGUITerminal  guiterminal.o
-    0x08004d6c   0x08004d6c   0x00000008   Code   RO         4383    i.SysTick_Handler   systick.o
-    0x08004d74   0x08004d74   0x00000050   Code   RO         4439    i.SystemInit        system_gd32f30x.o
-    0x08004dc4   0x08004dc4   0x00000060   Code   RO         1551    i.TIMER2_IRQHandler  timer.o
-    0x08004e24   0x08004e24   0x00000048   Code   RO         1552    i.TIMER5_IRQHandler  timer.o
-    0x08004e6c   0x08004e6c   0x00000018   Code   RO         4384    i.TimDelayDec       systick.o
-    0x08004e84   0x08004e84   0x000000b4   Code   RO         1694    i.USART0_IRQHandler  uart0.o
-    0x08004f38   0x08004f38   0x00000088   Code   RO         1423    i.UpdateStringShow  guiterminal.o
-    0x08004fc0   0x08004fc0   0x00000004   Code   RO         4286    i.UsageFault_Handler  gd32f30x_it.o
-    0x08004fc4   0x08004fc4   0x00000022   Code   RO          886    i.WaitReady         sdcardbyspi.o
+    0x080048ec   0x080048ec   0x0000021c   Code   RO          833    i.ScanTouch         touch.o
+    0x08004b08   0x08004b08   0x00000052   Code   RO          886    i.SendBlock         sdcardbyspi.o
+    0x08004b5a   0x08004b5a   0x00000074   Code   RO          887    i.SendCmd           sdcardbyspi.o
+    0x08004bce   0x08004bce   0x0000001e   Code   RO         1158    i.SetLineEditWidgetText  lineeditwidget.o
+    0x08004bec   0x08004bec   0x00000020   Code   RO          766    i.SetSCL            gt1151q.o
+    0x08004c0c   0x08004c0c   0x00000020   Code   RO          767    i.SetSDA            gt1151q.o
+    0x08004c2c   0x08004c2c   0x00000002   Code   RO          888    i.SetSpeedHigh      sdcardbyspi.o
+    0x08004c2e   0x08004c2e   0x00000002   Code   RO          889    i.SetSpeedLow       sdcardbyspi.o
+    0x08004c30   0x08004c30   0x000000b8   Code   RO         1422    i.ShowString        guiterminal.o
+    0x08004ce8   0x08004ce8   0x00000084   Code   RO         1423    i.ShowStringLineInGUITerminal  guiterminal.o
+    0x08004d6c   0x08004d6c   0x00000008   Code   RO         4384    i.SysTick_Handler   systick.o
+    0x08004d74   0x08004d74   0x00000050   Code   RO         4440    i.SystemInit        system_gd32f30x.o
+    0x08004dc4   0x08004dc4   0x00000060   Code   RO         1552    i.TIMER2_IRQHandler  timer.o
+    0x08004e24   0x08004e24   0x00000048   Code   RO         1553    i.TIMER5_IRQHandler  timer.o
+    0x08004e6c   0x08004e6c   0x00000018   Code   RO         4385    i.TimDelayDec       systick.o
+    0x08004e84   0x08004e84   0x000000b4   Code   RO         1695    i.USART0_IRQHandler  uart0.o
+    0x08004f38   0x08004f38   0x00000088   Code   RO         1424    i.UpdateStringShow  guiterminal.o
+    0x08004fc0   0x08004fc0   0x00000004   Code   RO         4287    i.UsageFault_Handler  gd32f30x_it.o
+    0x08004fc4   0x08004fc4   0x00000022   Code   RO          890    i.WaitReady         sdcardbyspi.o
     0x08004fe6   0x08004fe6   0x00000002   PAD
-    0x08004fe8   0x08004fe8   0x00000034   Code   RO          994    i.Write             readwritesdcard.o
-    0x0800501c   0x0800501c   0x00000018   Code   RO         1695    i.WriteReceiveBuf   uart0.o
-    0x08005034   0x08005034   0x000000c8   Code   RO          995    i.WriteSDCard       readwritesdcard.o
-    0x080050fc   0x080050fc   0x00000020   Code   RO         4698    i.__0printf$8       mc_w.l(printf8.o)
-    0x0800511c   0x0800511c   0x00000028   Code   RO         4700    i.__0sprintf$8      mc_w.l(printf8.o)
-    0x08005144   0x08005144   0x00000028   Code   RO         4385    i.__NVIC_SetPriority  systick.o
-    0x0800516c   0x0800516c   0x0000000e   Code   RO         4798    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x0800517a   0x0800517a   0x00000002   Code   RO         4799    i.__scatterload_null  mc_w.l(handlers.o)
-    0x0800517c   0x0800517c   0x0000000e   Code   RO         4800    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08004fe8   0x08004fe8   0x00000034   Code   RO          995    i.Write             readwritesdcard.o
+    0x0800501c   0x0800501c   0x00000018   Code   RO         1696    i.WriteReceiveBuf   uart0.o
+    0x08005034   0x08005034   0x000000c8   Code   RO          996    i.WriteSDCard       readwritesdcard.o
+    0x080050fc   0x080050fc   0x00000020   Code   RO         4699    i.__0printf$8       mc_w.l(printf8.o)
+    0x0800511c   0x0800511c   0x00000028   Code   RO         4701    i.__0sprintf$8      mc_w.l(printf8.o)
+    0x08005144   0x08005144   0x00000028   Code   RO         4386    i.__NVIC_SetPriority  systick.o
+    0x0800516c   0x0800516c   0x0000000e   Code   RO         4799    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0800517a   0x0800517a   0x00000002   Code   RO         4800    i.__scatterload_null  mc_w.l(handlers.o)
+    0x0800517c   0x0800517c   0x0000000e   Code   RO         4801    i.__scatterload_zeroinit  mc_w.l(handlers.o)
     0x0800518a   0x0800518a   0x00000002   PAD
-    0x0800518c   0x0800518c   0x00000410   Code   RO         4705    i._printf_core      mc_w.l(printf8.o)
-    0x0800559c   0x0800559c   0x00000024   Code   RO         4706    i._printf_post_padding  mc_w.l(printf8.o)
-    0x080055c0   0x080055c0   0x0000002e   Code   RO         4707    i._printf_pre_padding  mc_w.l(printf8.o)
-    0x080055ee   0x080055ee   0x0000000a   Code   RO         4709    i._sputc            mc_w.l(printf8.o)
-    0x080055f8   0x080055f8   0x0000001e   Code   RO          474    i.alloc_pool        tjpgd.o
-    0x08005616   0x08005616   0x00000090   Code   RO          475    i.bitext            tjpgd.o
+    0x0800518c   0x0800518c   0x00000410   Code   RO         4706    i._printf_core      mc_w.l(printf8.o)
+    0x0800559c   0x0800559c   0x00000024   Code   RO         4707    i._printf_post_padding  mc_w.l(printf8.o)
+    0x080055c0   0x080055c0   0x0000002e   Code   RO         4708    i._printf_pre_padding  mc_w.l(printf8.o)
+    0x080055ee   0x080055ee   0x0000000a   Code   RO         4710    i._sputc            mc_w.l(printf8.o)
+    0x080055f8   0x080055f8   0x0000001e   Code   RO          478    i.alloc_pool        tjpgd.o
+    0x08005616   0x08005616   0x00000090   Code   RO          479    i.bitext            tjpgd.o
     0x080056a6   0x080056a6   0x00000002   PAD
-    0x080056a8   0x080056a8   0x000002a8   Code   RO          476    i.block_idct        tjpgd.o
-    0x08005950   0x08005950   0x00000134   Code   RO          477    i.create_huffman_tbl  tjpgd.o
-    0x08005a84   0x08005a84   0x00000074   Code   RO          478    i.create_qt_tbl     tjpgd.o
-    0x08005af8   0x08005af8   0x00000016   Code   RO         3251    i.exmc_norsram_enable  gd32f30x_exmc.o
+    0x080056a8   0x080056a8   0x000002a8   Code   RO          480    i.block_idct        tjpgd.o
+    0x08005950   0x08005950   0x00000134   Code   RO          481    i.create_huffman_tbl  tjpgd.o
+    0x08005a84   0x08005a84   0x00000074   Code   RO          482    i.create_qt_tbl     tjpgd.o
+    0x08005af8   0x08005af8   0x00000016   Code   RO         3252    i.exmc_norsram_enable  gd32f30x_exmc.o
     0x08005b0e   0x08005b0e   0x00000002   PAD
-    0x08005b10   0x08005b10   0x0000011c   Code   RO         3252    i.exmc_norsram_init  gd32f30x_exmc.o
-    0x08005c2c   0x08005c2c   0x00000018   Code   RO         1825    i.fmc_wscnt_set     gd32f30x_fmc.o
-    0x08005c44   0x08005c44   0x00000024   Code   RO         1697    i.fputc             uart0.o
-    0x08005c68   0x08005c68   0x00000004   Code   RO         2031    i.gpio_bit_reset    gd32f30x_gpio.o
-    0x08005c6c   0x08005c6c   0x00000004   Code   RO         2032    i.gpio_bit_set      gd32f30x_gpio.o
-    0x08005c70   0x08005c70   0x0000000a   Code   RO         2033    i.gpio_bit_write    gd32f30x_gpio.o
-    0x08005c7a   0x08005c7a   0x000000bc   Code   RO         2041    i.gpio_init         gd32f30x_gpio.o
-    0x08005d36   0x08005d36   0x00000010   Code   RO         2042    i.gpio_input_bit_get  gd32f30x_gpio.o
-    0x08005d46   0x08005d46   0x000000c0   Code   RO          479    i.huffext           tjpgd.o
-    0x08005e06   0x08005e06   0x000000a2   Code   RO          480    i.jd_decomp         tjpgd.o
-    0x08005ea8   0x08005ea8   0x0000039c   Code   RO          481    i.jd_prepare        tjpgd.o
-    0x08006244   0x08006244   0x00000018   Code   RO            9    i.main              main.o
-    0x0800625c   0x0800625c   0x000001e4   Code   RO          482    i.mcu_load          tjpgd.o
-    0x08006440   0x08006440   0x00000394   Code   RO          483    i.mcu_output        tjpgd.o
-    0x080067d4   0x080067d4   0x000000c4   Code   RO         2163    i.nvic_irq_enable   gd32f30x_misc.o
-    0x08006898   0x08006898   0x00000014   Code   RO         2164    i.nvic_priority_group_set  gd32f30x_misc.o
-    0x080068ac   0x080068ac   0x00000018   Code   RO         2223    i.rcu_ahb_clock_config  gd32f30x_rcu.o
-    0x080068c4   0x080068c4   0x00000018   Code   RO         2225    i.rcu_apb1_clock_config  gd32f30x_rcu.o
-    0x080068dc   0x080068dc   0x00000018   Code   RO         2226    i.rcu_apb2_clock_config  gd32f30x_rcu.o
-    0x080068f4   0x080068f4   0x00000158   Code   RO         2231    i.rcu_clock_freq_get  gd32f30x_rcu.o
-    0x08006a4c   0x08006a4c   0x00000054   Code   RO         2233    i.rcu_deinit        gd32f30x_rcu.o
-    0x08006aa0   0x08006aa0   0x00000024   Code   RO         2234    i.rcu_flag_get      gd32f30x_rcu.o
-    0x08006ac4   0x08006ac4   0x00000020   Code   RO         2246    i.rcu_osci_on       gd32f30x_rcu.o
-    0x08006ae4   0x08006ae4   0x00000110   Code   RO         2247    i.rcu_osci_stab_wait  gd32f30x_rcu.o
-    0x08006bf4   0x08006bf4   0x00000020   Code   RO         2249    i.rcu_periph_clock_enable  gd32f30x_rcu.o
-    0x08006c14   0x08006c14   0x00000020   Code   RO         2252    i.rcu_periph_reset_disable  gd32f30x_rcu.o
-    0x08006c34   0x08006c34   0x00000020   Code   RO         2253    i.rcu_periph_reset_enable  gd32f30x_rcu.o
-    0x08006c54   0x08006c54   0x00000020   Code   RO         2254    i.rcu_pll_config    gd32f30x_rcu.o
-    0x08006c74   0x08006c74   0x00000018   Code   RO         2255    i.rcu_pllpresel_config  gd32f30x_rcu.o
-    0x08006c8c   0x08006c8c   0x00000020   Code   RO         2256    i.rcu_predv0_config  gd32f30x_rcu.o
-    0x08006cac   0x08006cac   0x00000018   Code   RO         2258    i.rcu_system_clock_source_config  gd32f30x_rcu.o
-    0x08006cc4   0x08006cc4   0x00000010   Code   RO         2259    i.rcu_system_clock_source_get  gd32f30x_rcu.o
-    0x08006cd4   0x08006cd4   0x00000070   Code   RO          484    i.restart           tjpgd.o
-    0x08006d44   0x08006d44   0x00000110   Code   RO         4440    i.system_clock_120m_hxtal  system_gd32f30x.o
-    0x08006e54   0x08006e54   0x00000008   Code   RO         4441    i.system_clock_config  system_gd32f30x.o
-    0x08006e5c   0x08006e5c   0x000000dc   Code   RO         2505    i.timer_deinit      gd32f30x_timer.o
-    0x08006f38   0x08006f38   0x0000000a   Code   RO         2510    i.timer_enable      gd32f30x_timer.o
-    0x08006f42   0x08006f42   0x00000002   PAD
-    0x08006f44   0x08006f44   0x00000098   Code   RO         2520    i.timer_init        gd32f30x_timer.o
-    0x08006fdc   0x08006fdc   0x00000008   Code   RO         2527    i.timer_interrupt_enable  gd32f30x_timer.o
-    0x08006fe4   0x08006fe4   0x00000006   Code   RO         2528    i.timer_interrupt_flag_clear  gd32f30x_timer.o
-    0x08006fea   0x08006fea   0x00000018   Code   RO         2529    i.timer_interrupt_flag_get  gd32f30x_timer.o
-    0x08007002   0x08007002   0x00000016   Code   RO         2540    i.timer_struct_para_init  gd32f30x_timer.o
-    0x08007018   0x08007018   0x00000090   Code   RO         2919    i.usart_baudrate_set  gd32f30x_usart.o
-    0x080070a8   0x080070a8   0x0000000a   Code   RO         2922    i.usart_data_receive  gd32f30x_usart.o
-    0x080070b2   0x080070b2   0x00000008   Code   RO         2923    i.usart_data_transmit  gd32f30x_usart.o
-    0x080070ba   0x080070ba   0x00000002   PAD
-    0x080070bc   0x080070bc   0x00000090   Code   RO         2924    i.usart_deinit      gd32f30x_usart.o
-    0x0800714c   0x0800714c   0x0000000a   Code   RO         2928    i.usart_enable      gd32f30x_usart.o
-    0x08007156   0x08007156   0x0000001e   Code   RO         2930    i.usart_flag_get    gd32f30x_usart.o
-    0x08007174   0x08007174   0x0000001a   Code   RO         2936    i.usart_interrupt_disable  gd32f30x_usart.o
-    0x0800718e   0x0800718e   0x0000001a   Code   RO         2937    i.usart_interrupt_enable  gd32f30x_usart.o
-    0x080071a8   0x080071a8   0x0000001a   Code   RO         2938    i.usart_interrupt_flag_clear  gd32f30x_usart.o
-    0x080071c2   0x080071c2   0x00000038   Code   RO         2939    i.usart_interrupt_flag_get  gd32f30x_usart.o
-    0x080071fa   0x080071fa   0x00000010   Code   RO         2950    i.usart_parity_config  gd32f30x_usart.o
-    0x0800720a   0x0800720a   0x00000010   Code   RO         2952    i.usart_receive_config  gd32f30x_usart.o
-    0x0800721a   0x0800721a   0x00000010   Code   RO         2962    i.usart_stop_bit_set  gd32f30x_usart.o
-    0x0800722a   0x0800722a   0x00000010   Code   RO         2966    i.usart_transmit_config  gd32f30x_usart.o
-    0x0800723a   0x0800723a   0x00000010   Code   RO         2967    i.usart_word_length_set  gd32f30x_usart.o
-    0x0800724a   0x0800724a   0x000017c0   Data   RO          286    .constdata          lcd.o
-    0x08008a0a   0x08008a0a   0x000004c0   Data   RO          485    .constdata          tjpgd.o
-    0x08008eca   0x08008eca   0x00026d49   Data   RO          562    .constdata          jpeg.o
-    0x0802fc13   0x0802fc13   0x00018e40   Data   RO          615    .constdata          bmp.o
-    0x08048a53   0x08048a53   0x00000001   PAD
-    0x08048a54   0x08048a54   0x0000004c   Data   RO         1314    .constdata          guibutton.o
-    0x08048aa0   0x08048aa0   0x0000001c   Data   RO         1361    .constdata          guilineedit.o
-    0x08048abc   0x08048abc   0x00000043   Data   RO          563    .conststring        jpeg.o
-    0x08048aff   0x08048aff   0x00000001   PAD
-    0x08048b00   0x08048b00   0x0000003e   Data   RO         1315    .conststring        guibutton.o
-    0x08048b3e   0x08048b3e   0x00000002   PAD
-    0x08048b40   0x08048b40   0x00000020   Data   RO         4796    Region$$Table       anon$$obj.o
+    0x08005b10   0x08005b10   0x0000011c   Code   RO         3253    i.exmc_norsram_init  gd32f30x_exmc.o
+    0x08005c2c   0x08005c2c   0x00000018   Code   RO         1826    i.fmc_wscnt_set     gd32f30x_fmc.o
+    0x08005c44   0x08005c44   0x00000024   Code   RO         1698    i.fputc             uart0.o
+    0x08005c68   0x08005c68   0x00000004   Code   RO         2032    i.gpio_bit_reset    gd32f30x_gpio.o
+    0x08005c6c   0x08005c6c   0x00000004   Code   RO         2033    i.gpio_bit_set      gd32f30x_gpio.o
+    0x08005c70   0x08005c70   0x0000000a   Code   RO         2034    i.gpio_bit_write    gd32f30x_gpio.o
+    0x08005c7a   0x08005c7a   0x000000bc   Code   RO         2042    i.gpio_init         gd32f30x_gpio.o
+    0x08005d36   0x08005d36   0x00000010   Code   RO         2043    i.gpio_input_bit_get  gd32f30x_gpio.o
+    0x08005d46   0x08005d46   0x000000c0   Code   RO          483    i.huffext           tjpgd.o
+    0x08005e06   0x08005e06   0x000000a2   Code   RO          484    i.jd_decomp         tjpgd.o
+    0x08005ea8   0x08005ea8   0x0000039c   Code   RO          485    i.jd_prepare        tjpgd.o
+    0x08006244   0x08006244   0x00000070   Code   RO            9    i.main              main.o
+    0x080062b4   0x080062b4   0x000001e4   Code   RO          486    i.mcu_load          tjpgd.o
+    0x08006498   0x08006498   0x00000394   Code   RO          487    i.mcu_output        tjpgd.o
+    0x0800682c   0x0800682c   0x000000c4   Code   RO         2164    i.nvic_irq_enable   gd32f30x_misc.o
+    0x080068f0   0x080068f0   0x00000014   Code   RO         2165    i.nvic_priority_group_set  gd32f30x_misc.o
+    0x08006904   0x08006904   0x00000018   Code   RO         2224    i.rcu_ahb_clock_config  gd32f30x_rcu.o
+    0x0800691c   0x0800691c   0x00000018   Code   RO         2226    i.rcu_apb1_clock_config  gd32f30x_rcu.o
+    0x08006934   0x08006934   0x00000018   Code   RO         2227    i.rcu_apb2_clock_config  gd32f30x_rcu.o
+    0x0800694c   0x0800694c   0x00000158   Code   RO         2232    i.rcu_clock_freq_get  gd32f30x_rcu.o
+    0x08006aa4   0x08006aa4   0x00000054   Code   RO         2234    i.rcu_deinit        gd32f30x_rcu.o
+    0x08006af8   0x08006af8   0x00000024   Code   RO         2235    i.rcu_flag_get      gd32f30x_rcu.o
+    0x08006b1c   0x08006b1c   0x00000020   Code   RO         2247    i.rcu_osci_on       gd32f30x_rcu.o
+    0x08006b3c   0x08006b3c   0x00000110   Code   RO         2248    i.rcu_osci_stab_wait  gd32f30x_rcu.o
+    0x08006c4c   0x08006c4c   0x00000020   Code   RO         2250    i.rcu_periph_clock_enable  gd32f30x_rcu.o
+    0x08006c6c   0x08006c6c   0x00000020   Code   RO         2253    i.rcu_periph_reset_disable  gd32f30x_rcu.o
+    0x08006c8c   0x08006c8c   0x00000020   Code   RO         2254    i.rcu_periph_reset_enable  gd32f30x_rcu.o
+    0x08006cac   0x08006cac   0x00000020   Code   RO         2255    i.rcu_pll_config    gd32f30x_rcu.o
+    0x08006ccc   0x08006ccc   0x00000018   Code   RO         2256    i.rcu_pllpresel_config  gd32f30x_rcu.o
+    0x08006ce4   0x08006ce4   0x00000020   Code   RO         2257    i.rcu_predv0_config  gd32f30x_rcu.o
+    0x08006d04   0x08006d04   0x00000018   Code   RO         2259    i.rcu_system_clock_source_config  gd32f30x_rcu.o
+    0x08006d1c   0x08006d1c   0x00000010   Code   RO         2260    i.rcu_system_clock_source_get  gd32f30x_rcu.o
+    0x08006d2c   0x08006d2c   0x00000070   Code   RO          488    i.restart           tjpgd.o
+    0x08006d9c   0x08006d9c   0x00000110   Code   RO         4441    i.system_clock_120m_hxtal  system_gd32f30x.o
+    0x08006eac   0x08006eac   0x00000008   Code   RO         4442    i.system_clock_config  system_gd32f30x.o
+    0x08006eb4   0x08006eb4   0x000000dc   Code   RO         2506    i.timer_deinit      gd32f30x_timer.o
+    0x08006f90   0x08006f90   0x0000000a   Code   RO         2511    i.timer_enable      gd32f30x_timer.o
+    0x08006f9a   0x08006f9a   0x00000002   PAD
+    0x08006f9c   0x08006f9c   0x00000098   Code   RO         2521    i.timer_init        gd32f30x_timer.o
+    0x08007034   0x08007034   0x00000008   Code   RO         2528    i.timer_interrupt_enable  gd32f30x_timer.o
+    0x0800703c   0x0800703c   0x00000006   Code   RO         2529    i.timer_interrupt_flag_clear  gd32f30x_timer.o
+    0x08007042   0x08007042   0x00000018   Code   RO         2530    i.timer_interrupt_flag_get  gd32f30x_timer.o
+    0x0800705a   0x0800705a   0x00000016   Code   RO         2541    i.timer_struct_para_init  gd32f30x_timer.o
+    0x08007070   0x08007070   0x00000090   Code   RO         2920    i.usart_baudrate_set  gd32f30x_usart.o
+    0x08007100   0x08007100   0x0000000a   Code   RO         2923    i.usart_data_receive  gd32f30x_usart.o
+    0x0800710a   0x0800710a   0x00000008   Code   RO         2924    i.usart_data_transmit  gd32f30x_usart.o
+    0x08007112   0x08007112   0x00000002   PAD
+    0x08007114   0x08007114   0x00000090   Code   RO         2925    i.usart_deinit      gd32f30x_usart.o
+    0x080071a4   0x080071a4   0x0000000a   Code   RO         2929    i.usart_enable      gd32f30x_usart.o
+    0x080071ae   0x080071ae   0x0000001e   Code   RO         2931    i.usart_flag_get    gd32f30x_usart.o
+    0x080071cc   0x080071cc   0x0000001a   Code   RO         2937    i.usart_interrupt_disable  gd32f30x_usart.o
+    0x080071e6   0x080071e6   0x0000001a   Code   RO         2938    i.usart_interrupt_enable  gd32f30x_usart.o
+    0x08007200   0x08007200   0x0000001a   Code   RO         2939    i.usart_interrupt_flag_clear  gd32f30x_usart.o
+    0x0800721a   0x0800721a   0x00000038   Code   RO         2940    i.usart_interrupt_flag_get  gd32f30x_usart.o
+    0x08007252   0x08007252   0x00000010   Code   RO         2951    i.usart_parity_config  gd32f30x_usart.o
+    0x08007262   0x08007262   0x00000010   Code   RO         2953    i.usart_receive_config  gd32f30x_usart.o
+    0x08007272   0x08007272   0x00000010   Code   RO         2963    i.usart_stop_bit_set  gd32f30x_usart.o
+    0x08007282   0x08007282   0x00000010   Code   RO         2967    i.usart_transmit_config  gd32f30x_usart.o
+    0x08007292   0x08007292   0x00000010   Code   RO         2968    i.usart_word_length_set  gd32f30x_usart.o
+    0x080072a2   0x080072a2   0x000017c0   Data   RO          290    .constdata          lcd.o
+    0x08008a62   0x08008a62   0x000004c0   Data   RO          489    .constdata          tjpgd.o
+    0x08008f22   0x08008f22   0x00026d49   Data   RO          566    .constdata          jpeg.o
+    0x0802fc6b   0x0802fc6b   0x00018e40   Data   RO          619    .constdata          bmp.o
+    0x08048aab   0x08048aab   0x00000001   PAD
+    0x08048aac   0x08048aac   0x0000004c   Data   RO         1315    .constdata          guibutton.o
+    0x08048af8   0x08048af8   0x0000001c   Data   RO         1362    .constdata          guilineedit.o
+    0x08048b14   0x08048b14   0x00000043   Data   RO          567    .conststring        jpeg.o
+    0x08048b57   0x08048b57   0x00000001   PAD
+    0x08048b58   0x08048b58   0x0000003e   Data   RO         1316    .conststring        guibutton.o
+    0x08048b96   0x08048b96   0x00000002   PAD
+    0x08048b98   0x08048b98   0x00000020   Data   RO         4797    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08048b60, Size: 0x00005620, Max: 0x00010000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08048bb8, Size: 0x00005820, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08048b60   0x00000002   Data   RW           10    .data               main.o
-    0x20000002   0x08048b62   0x00000003   Data   RW          217    .data               led.o
-    0x20000005   0x08048b65   0x00000001   PAD
-    0x20000006   0x08048b66   0x00000004   Data   RW          287    .data               lcd.o
-    0x2000000a   0x08048b6a   0x0000000a   Data   RW          765    .data               gt1151q.o
-    0x20000014   0x08048b74   0x00000004   Data   RW          887    .data               sdcardbyspi.o
-    0x20000018   0x08048b78   0x00000003   Data   RW          997    .data               readwritesdcard.o
-    0x2000001b   0x08048b7b   0x00000001   PAD
-    0x2000001c   0x08048b7c   0x00000064   Data   RW         1316    .data               guibutton.o
-    0x20000080   0x08048be0   0x00000004   Data   RW         1362    .data               guilineedit.o
-    0x20000084   0x08048be4   0x00000002   Data   RW         1425    .data               guiterminal.o
-    0x20000086   0x08048be6   0x00000002   PAD
-    0x20000088   0x08048be8   0x00000004   Data   RW         1478    .data               guitop.o
-    0x2000008c   0x08048bec   0x00000004   PAD
-    0x20000090   0x08048bf0   0x00000014   Data   RW         1553    .data               timer.o
-    0x200000a4   0x08048c04   0x00000001   Data   RW         1699    .data               uart0.o
-    0x200000a5   0x08048c05   0x00000003   PAD
-    0x200000a8   0x08048c08   0x00000004   Data   RW         4386    .data               systick.o
-    0x200000ac   0x08048c0c   0x00000004   Data   RW         4442    .data               system_gd32f30x.o
-    0x200000b0   0x08048c10   0x00000004   Data   RW         4772    .data               mc_w.l(stdout.o)
-    0x200000b4        -       0x0000000e   Zero   RW          285    .bss                lcd.o
-    0x200000c2   0x08048c14   0x00000002   PAD
-    0x200000c4        -       0x00001000   Zero   RW          561    .bss                jpeg.o
-    0x200010c4        -       0x00000038   Zero   RW          614    .bss                bmp.o
-    0x200010fc        -       0x00000018   Zero   RW          764    .bss                gt1151q.o
-    0x20001114        -       0x00000048   Zero   RW          830    .bss                touch.o
-    0x2000115c        -       0x00000858   Zero   RW          996    .bss                readwritesdcard.o
-    0x200019b4        -       0x00000558   Zero   RW         1313    .bss                guibutton.o
-    0x20001f0c        -       0x000002a0   Zero   RW         1360    .bss                guilineedit.o
-    0x200021ac        -       0x00000190   Zero   RW         1424    .bss                guiterminal.o
-    0x2000233c        -       0x000000e0   Zero   RW         1698    .bss                uart0.o
-    0x2000241c   0x08048c14   0x00000004   PAD
-    0x20002420        -       0x00003200   Zero   RW         4481    STACK               startup_gd32f30x_hd.o
+    0x20000000   0x08048bb8   0x00000002   Data   RW           11    .data               main.o
+    0x20000002   0x08048bba   0x00000003   Data   RW          221    .data               led.o
+    0x20000005   0x08048bbd   0x00000001   PAD
+    0x20000006   0x08048bbe   0x00000004   Data   RW          291    .data               lcd.o
+    0x2000000a   0x08048bc2   0x0000000a   Data   RW          769    .data               gt1151q.o
+    0x20000014   0x08048bcc   0x00000004   Data   RW          891    .data               sdcardbyspi.o
+    0x20000018   0x08048bd0   0x00000003   Data   RW          998    .data               readwritesdcard.o
+    0x2000001b   0x08048bd3   0x00000001   PAD
+    0x2000001c   0x08048bd4   0x00000064   Data   RW         1317    .data               guibutton.o
+    0x20000080   0x08048c38   0x00000004   Data   RW         1363    .data               guilineedit.o
+    0x20000084   0x08048c3c   0x00000002   Data   RW         1426    .data               guiterminal.o
+    0x20000086   0x08048c3e   0x00000002   PAD
+    0x20000088   0x08048c40   0x00000004   Data   RW         1479    .data               guitop.o
+    0x2000008c   0x08048c44   0x00000004   PAD
+    0x20000090   0x08048c48   0x00000014   Data   RW         1554    .data               timer.o
+    0x200000a4   0x08048c5c   0x00000001   Data   RW         1700    .data               uart0.o
+    0x200000a5   0x08048c5d   0x00000003   PAD
+    0x200000a8   0x08048c60   0x00000004   Data   RW         4387    .data               systick.o
+    0x200000ac   0x08048c64   0x00000004   Data   RW         4443    .data               system_gd32f30x.o
+    0x200000b0   0x08048c68   0x00000004   Data   RW         4773    .data               mc_w.l(stdout.o)
+    0x200000b4        -       0x00000200   Zero   RW           10    .bss                main.o
+    0x200002b4        -       0x0000000e   Zero   RW          289    .bss                lcd.o
+    0x200002c2   0x08048c6c   0x00000002   PAD
+    0x200002c4        -       0x00001000   Zero   RW          565    .bss                jpeg.o
+    0x200012c4        -       0x00000038   Zero   RW          618    .bss                bmp.o
+    0x200012fc        -       0x00000018   Zero   RW          768    .bss                gt1151q.o
+    0x20001314        -       0x00000048   Zero   RW          834    .bss                touch.o
+    0x2000135c        -       0x00000858   Zero   RW          997    .bss                readwritesdcard.o
+    0x20001bb4        -       0x00000558   Zero   RW         1314    .bss                guibutton.o
+    0x2000210c        -       0x000002a0   Zero   RW         1361    .bss                guilineedit.o
+    0x200023ac        -       0x00000190   Zero   RW         1425    .bss                guiterminal.o
+    0x2000253c        -       0x000000e0   Zero   RW         1699    .bss                uart0.o
+    0x2000261c   0x08048c6c   0x00000004   PAD
+    0x20002620        -       0x00003200   Zero   RW         4482    STACK               startup_gd32f30x_hd.o
 
 
 ==============================================================================
@@ -2575,45 +2581,45 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      1210        112     101952          0         56       8527   bmp.o
-       614         10          0          0          0       7109   buttonwidget.o
-       712         16          0          0          0       2135   exmc.o
-       306          4          0          0          0       3486   gd32f30x_exmc.o
-        24          6          0          0          0        656   gd32f30x_fmc.o
-       222          0          0          0          0       3826   gd32f30x_gpio.o
-        24          0          0          0          0       4804   gd32f30x_it.o
-       216         20          0          0          0       1636   gd32f30x_misc.o
-      1064        124          0          0          0      11869   gd32f30x_rcu.o
-       442         40          0          0          0       5549   gd32f30x_timer.o
-       560         16          0          0          0      11108   gd32f30x_usart.o
-       788        112          0         10         24       6880   gt1151q.o
-       684        104        138        100       1368       4400   guibutton.o
-      1108        156         28          4        672       8028   guilineedit.o
-       512          8          0          0          0       8826   guiplatform.o
-       664         68          0          2        400       6403   guiterminal.o
-       276         38          0          4          0       3184   guitop.o
-       788          0          0          0          0       8451   iiccommon.o
-       238         16     159116          0       4096       6183   jpeg.o
-      6944        112       6080          4         14      19012   lcd.o
-       256         36          0          3          0       2625   led.o
-       474          0          0          0          0       8318   lineeditwidget.o
-       198         12          0          2          0      78441   main.o
-        20          0          0          0          0       1163   nvic.o
-       190          0          0          0          0       4037   queue.o
-       112          0          0          0          0       1266   rcu.o
-      1104        420          0          3       2136       6636   readwritesdcard.o
-      1456         52          0          4          0      13881   sdcardbyspi.o
-        36          8        304          0      12800        936   startup_gd32f30x_hd.o
-       360         30          0          4          0       2371   system_gd32f30x.o
-       202         24          0          4          0      34401   systick.o
-         0          0          0          0          0        996   textwidget.o
-       436         76          0         20          0       7472   timer.o
-      4068         54       1216          0          0      18005   tjpgd.o
-       646         18          0          0         72       3870   touch.o
-       508         74          0          1        224      36039   uart0.o
+      1210        112     101952          0         56       7335   bmp.o
+       614         10          0          0          0       6049   buttonwidget.o
+       712         16          0          0          0       1787   exmc.o
+       306          4          0          0          0       3130   gd32f30x_exmc.o
+        24          6          0          0          0        536   gd32f30x_fmc.o
+       222          0          0          0          0       3234   gd32f30x_gpio.o
+        24          0          0          0          0       3864   gd32f30x_it.o
+       216         20          0          0          0       1400   gd32f30x_misc.o
+      1064        124          0          0          0       9985   gd32f30x_rcu.o
+       442         40          0          0          0       4605   gd32f30x_timer.o
+       560         16          0          0          0       9336   gd32f30x_usart.o
+       788        112          0         10         24       5580   gt1151q.o
+       684        104        138        100       1368       3692   guibutton.o
+      1108        156         28          4        672       6836   guilineedit.o
+       512          8          0          0          0       7642   guiplatform.o
+       664         68          0          2        400       5327   guiterminal.o
+       276         38          0          4          0       2588   guitop.o
+       788          0          0          0          0       7155   iiccommon.o
+       238         16     159116          0       4096       5215   jpeg.o
+      6944        112       6080          4         14      16500   lcd.o
+       256         36          0          3          0       2157   led.o
+       474          0          0          0          0       7026   lineeditwidget.o
+       286         50          0          2        512      76641   main.o
+        20          0          0          0          0        927   nvic.o
+       190          0          0          0          0       3333   queue.o
+       112          0          0          0          0       1030   rcu.o
+      1104        420          0          3       2136       5572   readwritesdcard.o
+      1456         52          0          4          0      11645   sdcardbyspi.o
+        36          8        304          0      12800        844   startup_gd32f30x_hd.o
+       360         30          0          4          0       1903   system_gd32f30x.o
+       202         24          0          4          0      33441   systick.o
+         0          0          0          0          0        880   textwidget.o
+       436         76          0         20          0       6060   timer.o
+      4068         54       1216          0          0      16237   tjpgd.o
+       646         18          0          0         72       3150   touch.o
+       508         74          0          1        224      34847   uart0.o
 
     ----------------------------------------------------------------------
-     27500       1766     268870        176      21868     352529   Object Totals
+     27588       1804     268870        176      22380     317489   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         38          0          4         11          6          0   (incl. Padding)
 
@@ -2657,15 +2663,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     28954       1842     268870        180      21868     330869   Grand Totals
-     28954       1842     268870        180      21868     330869   ELF Image Totals
-     28954       1842     268870        180          0          0   ROM Totals
+     29042       1880     268870        180      22380     295829   Grand Totals
+     29042       1880     268870        180      22380     295829   ELF Image Totals
+     29042       1880     268870        180          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)               297824 ( 290.84kB)
-    Total RW  Size (RW Data + ZI Data)             22048 (  21.53kB)
-    Total ROM Size (Code + RO Data + RW Data)     298004 ( 291.02kB)
+    Total RO  Size (Code + RO Data)               297912 ( 290.93kB)
+    Total RW  Size (RW Data + ZI Data)             22560 (  22.03kB)
+    Total ROM Size (Code + RO Data + RW Data)     298092 ( 291.11kB)
 
 ==============================================================================
 

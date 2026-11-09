@@ -6,7 +6,7 @@
 .\objects\lineeditwidget.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\lineeditwidget.o: ..\ARM\System\gd32f30x.h
 .\objects\lineeditwidget.o: ..\ARM\System\core_cm4.h
-.\objects\lineeditwidget.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\lineeditwidget.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\lineeditwidget.o: ..\ARM\System\cmsis_version.h
 .\objects\lineeditwidget.o: ..\ARM\System\cmsis_compiler.h
 .\objects\lineeditwidget.o: ..\ARM\System\cmsis_armcc.h

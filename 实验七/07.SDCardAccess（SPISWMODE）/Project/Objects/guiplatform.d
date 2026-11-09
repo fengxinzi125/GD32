@@ -6,7 +6,7 @@
 .\objects\guiplatform.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\guiplatform.o: ..\ARM\System\gd32f30x.h
 .\objects\guiplatform.o: ..\ARM\System\core_cm4.h
-.\objects\guiplatform.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\guiplatform.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\guiplatform.o: ..\ARM\System\cmsis_version.h
 .\objects\guiplatform.o: ..\ARM\System\cmsis_compiler.h
 .\objects\guiplatform.o: ..\ARM\System\cmsis_armcc.h
@@ -40,7 +40,7 @@
 .\objects\guiplatform.o: ..\FW\Include\gd32f30x_exmc.h
 .\objects\guiplatform.o: ..\ARM\System\core_cm4.h
 .\objects\guiplatform.o: ..\App\LCD\LCD.h
-.\objects\guiplatform.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\guiplatform.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\guiplatform.o: ..\App\Touch\Touch.h
 .\objects\guiplatform.o: ..\App\Picture\BMP.h
 .\objects\guiplatform.o: ..\App\Picture\JPEG.h

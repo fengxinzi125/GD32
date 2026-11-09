@@ -4,7 +4,7 @@
 .\objects\main.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\main.o: ..\ARM\System\gd32f30x.h
 .\objects\main.o: ..\ARM\System\core_cm4.h
-.\objects\main.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: ..\ARM\System\cmsis_version.h
 .\objects\main.o: ..\ARM\System\cmsis_compiler.h
 .\objects\main.o: ..\ARM\System\cmsis_armcc.h
@@ -43,12 +43,13 @@
 .\objects\main.o: ..\ARM\NVIC\NVIC.h
 .\objects\main.o: ..\HW\Timer\Timer.h
 .\objects\main.o: ..\HW\UART0\UART0.h
-.\objects\main.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: ..\HW\EXMC\EXMC.h
 .\objects\main.o: ..\App\LED\LED.h
 .\objects\main.o: ..\App\LCD\LCD.h
-.\objects\main.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: ..\App\Picture\JPEG.h
 .\objects\main.o: ..\App\Picture\BMP.h
 .\objects\main.o: ..\App\Touch\Touch.h
 .\objects\main.o: ..\App\ReadWriteSDCard\ReadWriteSDCard.h
+.\objects\main.o: ..\App\SDCard\SDCardBySPI.h

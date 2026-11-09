@@ -68,15 +68,15 @@ static void InitBSP(void)
   rcu_periph_clock_enable(RCU_GPIOD);  //使能GPIOD的时钟
   
   //CS
-  gpio_init(GPIOC, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_11); //推完输出
+  gpio_init(GPIOC, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_11); //推挽输出
   gpio_bit_set(GPIOC, GPIO_PIN_11);                                   //拉高片选
   
   //CLK
-  gpio_init(GPIOC, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_12);  //推完输出
+  gpio_init(GPIOC, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_12);  //推挽输出
   gpio_bit_set(GPIOC, GPIO_PIN_12);                                    //拉高时钟线
 
   //MOSI
-  gpio_init(GPIOD, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_2);  //推完输出
+  gpio_init(GPIOD, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_2);  //推挽输出
   gpio_bit_set(GPIOD, GPIO_PIN_2);                                    //MOSI默认输出高电平
 
   //MISO
@@ -95,7 +95,7 @@ static void InitBSP(void)
 * 创建日期：2021年07月01日
 * 注    意：
 *********************************************************************************************************/
-static u8 ReadWriteByte(u8 data)
+static u8 ReadWriteByte(u8 data)           //使用一次函数发出8位，同时从sd卡收回8位
 {
   u8 i, readData;
 
@@ -105,8 +105,8 @@ static u8 ReadWriteByte(u8 data)
     //拉低时钟线
     gpio_bit_reset(GPIOC, GPIO_PIN_12); 
 
-    //设置MOSI输出
-    if(data & 0x80)
+    //设置MOSI输出 
+    if(data & 0x80)                        //&是按位与，0x80` 的二进制是 1000 0000，只保留最高位
     {
       gpio_bit_set(GPIOD, GPIO_PIN_2);
     }
@@ -126,6 +126,12 @@ static u8 ReadWriteByte(u8 data)
 
     //获取MISO输入
     readData = (readData << 1) | gpio_input_bit_get(GPIOC, GPIO_PIN_8);
+		/******************************************************************
+		可以理解位拆成这三步进行
+		u8 receivedBit = gpio_input_bit_get(GPIOC, GPIO_PIN_8);
+		u8 shifted = readData << 1;
+		readData = shifted | receivedBit;  进行或运算，把刚接收到的那一位放到最低位
+		******************************************************************/
 
     //发送数据左移
     data = data << 1;
@@ -364,7 +370,7 @@ static u32 SendCmd(u8 cmd, u32 arg, u8 crc)
     return 0xFF; 
   }
 
-  //发送命令
+  //发送命令，把命令拆分为6个字节，从高字节到低字节
   ReadWriteByte(cmd | 0x40);
   ReadWriteByte(arg >> 24);
   ReadWriteByte(arg >> 16);
@@ -512,7 +518,7 @@ u32 SDGetSectorCount(void)
 * 创建日期：2021年07月01日
 * 注    意：void
 *********************************************************************************************************/
-u32 InitSDCard(void)
+u32 InitSDCard(void)             //让SD卡进入可读写状态
 {
   u8   r1;    //存放SD卡的返回值
   u16 retry;  //用来进行超时计数
@@ -528,7 +534,7 @@ u32 InitSDCard(void)
   //发送最少74个脉冲
   for(i = 0;i < 10; i++)
   {
-    ReadWriteByte(0xFF);
+    ReadWriteByte(0xFF);        //里面有8个时钟，所以一共有80个
   }
   
   //进入IDLE状态
@@ -536,7 +542,7 @@ u32 InitSDCard(void)
   do
   {
     r1 = SendCmd(CMD0, 0, 0x95);
-  }while((r1 != 0X01) && retry--);
+  }while((r1 != 0X01) && retry--);   //等待卡进入空闲模式
 
   //开始初始化
   s_iSDCardType = 0;//默认无卡
@@ -653,7 +659,7 @@ u32 InitSDCard(void)
 
 /*********************************************************************************************************
 * 函数名称：SDReadSector
-* 函数功能：读SD卡
+* 函数功能：读SD卡 从 SD 卡读取一个或多个 512 字节扇区，把数据放进你提供的 SRAM 缓冲区
 * 输入参数：buf：数据缓存区，sector：扇区，sectorNum:扇区数
 * 输出参数：void
 * 返 回 值：0-成功，其他-失败
@@ -667,7 +673,7 @@ u32 SDReadSector(u8* buf, u32 sector, u32 sectorNum)
   //转换为字节地址
   if(s_iSDCardType != SD_TYPE_V2HC)
   {
-    sector <<= 9;
+    sector <<= 9;    //相当于乘以2的九次方
   }
 
   //读单扇区

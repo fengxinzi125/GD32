@@ -5,7 +5,7 @@
 .\objects\sdcardbyspi.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\sdcardbyspi.o: ..\ARM\System\gd32f30x.h
 .\objects\sdcardbyspi.o: ..\ARM\System\core_cm4.h
-.\objects\sdcardbyspi.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\sdcardbyspi.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\sdcardbyspi.o: ..\ARM\System\cmsis_version.h
 .\objects\sdcardbyspi.o: ..\ARM\System\cmsis_compiler.h
 .\objects\sdcardbyspi.o: ..\ARM\System\cmsis_armcc.h

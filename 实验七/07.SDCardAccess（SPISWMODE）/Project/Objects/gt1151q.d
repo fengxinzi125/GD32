@@ -5,7 +5,7 @@
 .\objects\gt1151q.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\gt1151q.o: ..\ARM\System\gd32f30x.h
 .\objects\gt1151q.o: ..\ARM\System\core_cm4.h
-.\objects\gt1151q.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\gt1151q.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\gt1151q.o: ..\ARM\System\cmsis_version.h
 .\objects\gt1151q.o: ..\ARM\System\cmsis_compiler.h
 .\objects\gt1151q.o: ..\ARM\System\cmsis_armcc.h
@@ -41,6 +41,6 @@
 .\objects\gt1151q.o: ..\App\Touch\Touch.h
 .\objects\gt1151q.o: ..\ARM\SysTick\SysTick.h
 .\objects\gt1151q.o: ..\App\IICCommon\IICCommon.h
-.\objects\gt1151q.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\gt1151q.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\gt1151q.o: ..\App\LCD\LCD.h
-.\objects\gt1151q.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\gt1151q.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h

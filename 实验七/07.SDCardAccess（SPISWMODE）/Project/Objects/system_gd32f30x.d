@@ -1,7 +1,7 @@
 .\objects\system_gd32f30x.o: ..\ARM\System\system_gd32f30x.c
 .\objects\system_gd32f30x.o: ..\ARM\System\gd32f30x.h
 .\objects\system_gd32f30x.o: ..\ARM\System\core_cm4.h
-.\objects\system_gd32f30x.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\system_gd32f30x.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\system_gd32f30x.o: ..\ARM\System\cmsis_version.h
 .\objects\system_gd32f30x.o: ..\ARM\System\cmsis_compiler.h
 .\objects\system_gd32f30x.o: ..\ARM\System\cmsis_armcc.h

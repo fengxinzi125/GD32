@@ -5,7 +5,7 @@
 .\objects\guitop.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\guitop.o: ..\ARM\System\gd32f30x.h
 .\objects\guitop.o: ..\ARM\System\core_cm4.h
-.\objects\guitop.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\guitop.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\guitop.o: ..\ARM\System\cmsis_version.h
 .\objects\guitop.o: ..\ARM\System\cmsis_compiler.h
 .\objects\guitop.o: ..\ARM\System\cmsis_armcc.h
@@ -39,9 +39,9 @@
 .\objects\guitop.o: ..\FW\Include\gd32f30x_exmc.h
 .\objects\guitop.o: ..\ARM\System\core_cm4.h
 .\objects\guitop.o: ..\App\LCD\LCD.h
-.\objects\guitop.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\guitop.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\guitop.o: ..\App\Picture\JPEG.h
 .\objects\guitop.o: ..\App\EmbGUI\Module\GUIButton.h
 .\objects\guitop.o: ..\App\EmbGUI\Module\GUILineEdit.h
 .\objects\guitop.o: ..\App\EmbGUI\Module\GUITerminal.h
-.\objects\guitop.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\guitop.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h

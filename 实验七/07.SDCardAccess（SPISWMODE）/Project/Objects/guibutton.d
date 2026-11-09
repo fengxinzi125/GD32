@@ -5,7 +5,7 @@
 .\objects\guibutton.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\guibutton.o: ..\ARM\System\gd32f30x.h
 .\objects\guibutton.o: ..\ARM\System\core_cm4.h
-.\objects\guibutton.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\guibutton.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\guibutton.o: ..\ARM\System\cmsis_version.h
 .\objects\guibutton.o: ..\ARM\System\cmsis_compiler.h
 .\objects\guibutton.o: ..\ARM\System\cmsis_armcc.h
@@ -39,7 +39,7 @@
 .\objects\guibutton.o: ..\FW\Include\gd32f30x_exmc.h
 .\objects\guibutton.o: ..\ARM\System\core_cm4.h
 .\objects\guibutton.o: ..\App\LCD\LCD.h
-.\objects\guibutton.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\guibutton.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\guibutton.o: ..\App\EmbGUI\Widget\ButtonWidget.h
 .\objects\guibutton.o: ..\App\EmbGUI\Platform\GUIConf.h
 .\objects\guibutton.o: ..\App\EmbGUI\Platform\GUIPlatform.h

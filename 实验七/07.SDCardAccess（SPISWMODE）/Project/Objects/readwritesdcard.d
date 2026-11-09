@@ -5,7 +5,7 @@
 .\objects\readwritesdcard.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\readwritesdcard.o: ..\ARM\System\gd32f30x.h
 .\objects\readwritesdcard.o: ..\ARM\System\core_cm4.h
-.\objects\readwritesdcard.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\readwritesdcard.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\readwritesdcard.o: ..\ARM\System\cmsis_version.h
 .\objects\readwritesdcard.o: ..\ARM\System\cmsis_compiler.h
 .\objects\readwritesdcard.o: ..\ARM\System\cmsis_armcc.h
@@ -40,8 +40,8 @@
 .\objects\readwritesdcard.o: ..\ARM\System\core_cm4.h
 .\objects\readwritesdcard.o: ..\App\SDCard\SDCardBySPI.h
 .\objects\readwritesdcard.o: ..\App\EmbGUI\App\GUITop.h
-.\objects\readwritesdcard.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\readwritesdcard.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\readwritesdcard.o: ..\ARM\SysTick\SysTick.h
 .\objects\readwritesdcard.o: ..\App\LED\LED.h
 .\objects\readwritesdcard.o: ..\App\LCD\LCD.h
-.\objects\readwritesdcard.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\readwritesdcard.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h

@@ -5,7 +5,7 @@
 .\objects\iiccommon.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\iiccommon.o: ..\ARM\System\gd32f30x.h
 .\objects\iiccommon.o: ..\ARM\System\core_cm4.h
-.\objects\iiccommon.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\iiccommon.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\iiccommon.o: ..\ARM\System\cmsis_version.h
 .\objects\iiccommon.o: ..\ARM\System\cmsis_compiler.h
 .\objects\iiccommon.o: ..\ARM\System\cmsis_armcc.h

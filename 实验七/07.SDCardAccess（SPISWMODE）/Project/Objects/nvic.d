@@ -5,7 +5,7 @@
 .\objects\nvic.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\nvic.o: ..\ARM\System\gd32f30x.h
 .\objects\nvic.o: ..\ARM\System\core_cm4.h
-.\objects\nvic.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\nvic.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\nvic.o: ..\ARM\System\cmsis_version.h
 .\objects\nvic.o: ..\ARM\System\cmsis_compiler.h
 .\objects\nvic.o: ..\ARM\System\cmsis_armcc.h

@@ -5,7 +5,7 @@
 .\objects\lcd.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\lcd.o: ..\ARM\System\gd32f30x.h
 .\objects\lcd.o: ..\ARM\System\core_cm4.h
-.\objects\lcd.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\lcd.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\lcd.o: ..\ARM\System\cmsis_version.h
 .\objects\lcd.o: ..\ARM\System\cmsis_compiler.h
 .\objects\lcd.o: ..\ARM\System\cmsis_armcc.h
@@ -38,7 +38,7 @@
 .\objects\lcd.o: ..\FW\Include\gd32f30x_enet.h
 .\objects\lcd.o: ..\FW\Include\gd32f30x_exmc.h
 .\objects\lcd.o: ..\ARM\System\core_cm4.h
-.\objects\lcd.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\lcd.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\lcd.o: ..\App\LCD\Font.h
-.\objects\lcd.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\lcd.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\lcd.o: ..\ARM\SysTick\systick.h

@@ -5,7 +5,7 @@
 .\objects\guilineedit.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\guilineedit.o: ..\ARM\System\gd32f30x.h
 .\objects\guilineedit.o: ..\ARM\System\core_cm4.h
-.\objects\guilineedit.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\guilineedit.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\guilineedit.o: ..\ARM\System\cmsis_version.h
 .\objects\guilineedit.o: ..\ARM\System\cmsis_compiler.h
 .\objects\guilineedit.o: ..\ARM\System\cmsis_armcc.h
@@ -39,9 +39,9 @@
 .\objects\guilineedit.o: ..\FW\Include\gd32f30x_exmc.h
 .\objects\guilineedit.o: ..\ARM\System\core_cm4.h
 .\objects\guilineedit.o: ..\App\LCD\LCD.h
-.\objects\guilineedit.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\guilineedit.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\guilineedit.o: ..\App\EmbGUI\Widget\LineEditWidget.h
 .\objects\guilineedit.o: ..\App\EmbGUI\Platform\GUIConf.h
 .\objects\guilineedit.o: ..\App\EmbGUI\Platform\GUIPlatform.h
 .\objects\guilineedit.o: ..\App\Picture\JPEG.h
-.\objects\guilineedit.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\guilineedit.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h

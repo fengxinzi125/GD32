@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\GD32KeilPrj.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\GD32KeilPrj.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Aug 02 16:42:24 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Nov 09 16:27:56 2026
 <BR><P>
 <H3>Maximum Stack Usage =        488 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -591,10 +591,10 @@ Global Symbols
 <P><STRONG><a name="[bd]"></a>IICCommonReadBytesEx</STRONG> (Thumb, 178 bytes, Stack size 24 bytes, iiccommon.o(i.IICCommonReadBytesEx))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = IICCommonReadBytesEx &rArr; IICCommonSendOneByte &rArr; IICCommonReadACK
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICCommonEnd
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICCommonStart
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICCommonStart
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICCommonSendOneByte
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICCommonReadOneByte
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICCommonEnd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ScanGT1151Q
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitGT1151Q
@@ -640,9 +640,9 @@ Global Symbols
 <P><STRONG><a name="[c5]"></a>IICCommonWriteBytesEx</STRONG> (Thumb, 134 bytes, Stack size 24 bytes, iiccommon.o(i.IICCommonWriteBytesEx))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = IICCommonWriteBytesEx &rArr; IICCommonSendOneByte &rArr; IICCommonReadACK
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICCommonEnd
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICCommonStart
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICCommonStart
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICCommonSendOneByte
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICCommonEnd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ScanGT1151Q
 </UL>
@@ -1062,7 +1062,8 @@ Global Symbols
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RecvData
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisSelect
 </UL>
-<BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write
+<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read
 </UL>
 
@@ -1213,6 +1214,7 @@ Global Symbols
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadWriteSDCardTask
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitReadWriteSDCard
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitLCD
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteSDCard
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadSDCard
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitGT1151Q
@@ -1327,14 +1329,16 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayJPEGInFlash
 </UL>
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 74 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 488<LI>Call Chain = main &rArr; Proc2msTask &rArr; ReadWriteSDCardTask &rArr; GUITask &rArr; AddGUILineEditText &rArr; SetLineEditWidgetText &rArr; DrawBackground &rArr; GUIDrawImage &rArr; DisplayJPEGInFlash &rArr; jd_decomp &rArr; mcu_load &rArr; block_idct
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proc2msTask
+<BR>[Calls]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDReadSector
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proc2msTask
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proc1msTask
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proc1SecTask
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitSoftware
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitHardware
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
@@ -1805,8 +1809,8 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadWriteByte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDWriteSector
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDReadSector
+<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDReadSector
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDWriteSector
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDGetCSD
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitSDCard
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SendCmd
@@ -1884,8 +1888,8 @@ Local Symbols
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnSelect
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisSelect
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDWriteSector
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDReadSector
+<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDReadSector
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDWriteSector
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDGetCSD
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitSDCard
 </UL>
@@ -1926,16 +1930,16 @@ Local Symbols
 <BR>[Address Reference Count : 1]<UL><LI> readwritesdcard.o(i.InitReadWriteSDCard)
 </UL>
 <P><STRONG><a name="[11b]"></a>Write</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, readwritesdcard.o(i.Write))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Write &rArr; SDWriteSector &rArr; SendCmd &rArr; EnSelect &rArr; WaitReady &rArr; ReadWriteByte &rArr; DelayNus
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Write &rArr; SDReadSector &rArr; SendCmd &rArr; EnSelect &rArr; WaitReady &rArr; ReadWriteByte &rArr; DelayNus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDWriteSector
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDReadSector
+<BR>[Calls]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDReadSector
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDWriteSector
 </UL>
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteSDCard
 </UL>
 
 <P><STRONG><a name="[54]"></a>WriteSDCard</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, readwritesdcard.o(i.WriteSDCard))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = WriteSDCard &rArr; Write &rArr; SDWriteSector &rArr; SendCmd &rArr; EnSelect &rArr; WaitReady &rArr; ReadWriteByte &rArr; DelayNus
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = WriteSDCard &rArr; Write &rArr; SDReadSector &rArr; SendCmd &rArr; EnSelect &rArr; WaitReady &rArr; ReadWriteByte &rArr; DelayNus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write
 <LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDDetect

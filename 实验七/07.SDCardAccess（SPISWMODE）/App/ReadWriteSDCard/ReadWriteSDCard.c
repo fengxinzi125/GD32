@@ -70,7 +70,7 @@ static u8* Read(u32 addr, u32 len)
 
   //查找数据块首地址
   addrOffset = 0;
-  while(0 != (addr % SD_SECTOR_SIZE))
+  while(0 != (addr % SD_SECTOR_SIZE))     //addr % 512 是地址在扇区里的偏移
   {
     addr = addr - 1;
     addrOffset = addrOffset + 1;
@@ -165,7 +165,7 @@ static void ReadSDCard(u32 addr, u32 len)
       printf("%s", s_arrStringBuff);
 
       //从SD卡中读取数据
-      buff = Read(addr, len);
+      buff = Read(addr, len);        //addr是卡上的字节地址，len是要读的字节数
 
       //打印到终端和串口上
       for(i = 0; i < len; i++)
@@ -250,7 +250,7 @@ void InitReadWriteSDCard(void)
   
   //初始化SD卡
   firstShowFlag = 1;
-  while(SD_OK != InitSDCard())
+  while(SD_OK != InitSDCard())       //进行初始化判断
   {
     //LCD输出提示信息
     if(1 == firstShowFlag)
@@ -287,7 +287,7 @@ void InitReadWriteSDCard(void)
 
   //SD卡结束地址
   s_structGUIDev.endAddr = s_structGUIDev.beginAddr + SDGetSectorCount() * SD_SECTOR_SIZE - 1;
-
+	//SDGetSectorCount（）返回扇区地址，每个扇区是512个字节，然后乘以扇区数，因为地址是0开始，所以要减一
   //设置写入回调函数
   s_structGUIDev.writeCallback = WriteSDCard;
 

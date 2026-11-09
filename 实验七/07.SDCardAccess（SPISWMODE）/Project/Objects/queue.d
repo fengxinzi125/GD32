@@ -5,7 +5,7 @@
 .\objects\queue.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\queue.o: ..\ARM\System\gd32f30x.h
 .\objects\queue.o: ..\ARM\System\core_cm4.h
-.\objects\queue.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\queue.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\queue.o: ..\ARM\System\cmsis_version.h
 .\objects\queue.o: ..\ARM\System\cmsis_compiler.h
 .\objects\queue.o: ..\ARM\System\cmsis_armcc.h

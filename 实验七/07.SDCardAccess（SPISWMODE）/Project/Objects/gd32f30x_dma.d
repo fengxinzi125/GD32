@@ -2,7 +2,7 @@
 .\objects\gd32f30x_dma.o: ..\FW\Include\gd32f30x_dma.h
 .\objects\gd32f30x_dma.o: ..\ARM\System\gd32f30x.h
 .\objects\gd32f30x_dma.o: ..\ARM\System\core_cm4.h
-.\objects\gd32f30x_dma.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\gd32f30x_dma.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\gd32f30x_dma.o: ..\ARM\System\cmsis_version.h
 .\objects\gd32f30x_dma.o: ..\ARM\System\cmsis_compiler.h
 .\objects\gd32f30x_dma.o: ..\ARM\System\cmsis_armcc.h
@@ -34,4 +34,4 @@
 .\objects\gd32f30x_dma.o: ..\FW\Include\gd32f30x_misc.h
 .\objects\gd32f30x_dma.o: ..\FW\Include\gd32f30x_enet.h
 .\objects\gd32f30x_dma.o: ..\FW\Include\gd32f30x_exmc.h
-.\objects\gd32f30x_dma.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\gd32f30x_dma.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h

@@ -328,7 +328,7 @@ void DelectGUILineEditTextChar(void)
 
 /*********************************************************************************************************
 * 函数名称：GetGUILineEditRusult
-* 函数功能：获取行编辑控件输入结果
+* 函数功能：获取行编辑控件输入结果，将16位字符转化为程序可以使用的整数
 * 输入参数：lineEdit：控件枚举，result：用于返回输入结果
 * 输出参数：void
 * 返 回 值：0-获取成功，其它：获取失败
@@ -352,10 +352,10 @@ u8 GetGUILineEditRusult(EnumGUILineEdit lineEdit, u32* result)
   sum = 0;
   while(1)
   {
-    charValue = CharToU32(s_arrText[lineEdit][i]);
+    charValue = CharToU32(s_arrText[lineEdit][i]);         //进行字符积累，把字符转化位数字，遇到字符串结尾“\0”结果不小于16，退出
     if(charValue < 16)
     {
-      sum = sum * 16 + charValue;
+      sum = sum * 16 + charValue;  //乘以16是把已经有的16位向左挪一位，腾一个新的位置
     }
     else
     {

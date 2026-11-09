@@ -6,7 +6,7 @@
 .\objects\buttonwidget.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\buttonwidget.o: ..\ARM\System\gd32f30x.h
 .\objects\buttonwidget.o: ..\ARM\System\core_cm4.h
-.\objects\buttonwidget.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\buttonwidget.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\buttonwidget.o: ..\ARM\System\cmsis_version.h
 .\objects\buttonwidget.o: ..\ARM\System\cmsis_compiler.h
 .\objects\buttonwidget.o: ..\ARM\System\cmsis_armcc.h

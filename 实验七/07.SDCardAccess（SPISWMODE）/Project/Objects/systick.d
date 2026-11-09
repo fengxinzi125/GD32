@@ -5,7 +5,7 @@
 .\objects\systick.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\systick.o: ..\ARM\System\gd32f30x.h
 .\objects\systick.o: ..\ARM\System\core_cm4.h
-.\objects\systick.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\systick.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\systick.o: ..\ARM\System\cmsis_version.h
 .\objects\systick.o: ..\ARM\System\cmsis_compiler.h
 .\objects\systick.o: ..\ARM\System\cmsis_armcc.h

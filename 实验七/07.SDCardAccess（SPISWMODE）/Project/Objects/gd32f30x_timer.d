@@ -2,7 +2,7 @@
 .\objects\gd32f30x_timer.o: ..\FW\Include\gd32f30x_timer.h
 .\objects\gd32f30x_timer.o: ..\ARM\System\gd32f30x.h
 .\objects\gd32f30x_timer.o: ..\ARM\System\core_cm4.h
-.\objects\gd32f30x_timer.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\gd32f30x_timer.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\gd32f30x_timer.o: ..\ARM\System\cmsis_version.h
 .\objects\gd32f30x_timer.o: ..\ARM\System\cmsis_compiler.h
 .\objects\gd32f30x_timer.o: ..\ARM\System\cmsis_armcc.h

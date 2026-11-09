@@ -5,7 +5,7 @@
 .\objects\jpeg.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\jpeg.o: ..\ARM\System\gd32f30x.h
 .\objects\jpeg.o: ..\ARM\System\core_cm4.h
-.\objects\jpeg.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\jpeg.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\jpeg.o: ..\ARM\System\cmsis_version.h
 .\objects\jpeg.o: ..\ARM\System\cmsis_compiler.h
 .\objects\jpeg.o: ..\ARM\System\cmsis_armcc.h
@@ -42,5 +42,5 @@
 .\objects\jpeg.o: ..\App\Picture\integer.h
 .\objects\jpeg.o: ..\App\Picture\JPEGImage.h
 .\objects\jpeg.o: ..\App\LCD\LCD.h
-.\objects\jpeg.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\jpeg.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\jpeg.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\jpeg.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h

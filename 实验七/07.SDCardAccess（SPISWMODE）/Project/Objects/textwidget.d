@@ -6,7 +6,7 @@
 .\objects\textwidget.o: ..\FW\Include\gd32f30x_adc.h
 .\objects\textwidget.o: ..\ARM\System\gd32f30x.h
 .\objects\textwidget.o: ..\ARM\System\core_cm4.h
-.\objects\textwidget.o: C:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\textwidget.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\textwidget.o: ..\ARM\System\cmsis_version.h
 .\objects\textwidget.o: ..\ARM\System\cmsis_compiler.h
 .\objects\textwidget.o: ..\ARM\System\cmsis_armcc.h
