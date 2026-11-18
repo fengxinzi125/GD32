@@ -47,3 +47,5 @@
 .\objects\fatfstest.o: ..\TPSW\FatFs\src\integer.h
 .\objects\fatfstest.o: ..\TPSW\FatFs\src\ffconf.h
 .\objects\fatfstest.o: ..\TPSW\FatFs\src\diskio.h
+.\objects\fatfstest.o: ..\HW\NandFlash\FTL.h
+.\objects\fatfstest.o: ..\HW\NandFlash\NandFlash.h

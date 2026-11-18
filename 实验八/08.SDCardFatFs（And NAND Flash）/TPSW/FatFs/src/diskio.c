@@ -268,13 +268,13 @@ DRESULT disk_ioctl (
 
       //获得块大小
       case GET_BLOCK_SIZE:
-        *(WORD*)buff = (WORD)(NAND_BLOCK_SIZE * 4);
+        *(DWORD*)buff = (DWORD)NAND_BLOCK_SIZE * (NAND_PAGE_SIZE / FTL_SECTOR_SIZE);
         return RES_OK;
 
       //获取扇区数量
       case GET_SECTOR_COUNT:
-        *(DWORD*)buff = NAND_BLOCK_COUNT * NAND_BLOCK_SIZE * 4;
-        return RES_OK;
+        *(DWORD*)buff = FTLGetSectorCount();
+        return (*(DWORD*)buff != 0) ? RES_OK : RES_ERROR;
 
       //擦除块
       case CTRL_ERASE_SECTOR:

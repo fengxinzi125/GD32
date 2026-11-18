@@ -309,7 +309,11 @@ u32 NandWritePage(u32 block, u32 page, u32 column, u8* buf, u32 len)
   eccCnt = 0;
   for(i = 0; i < len; i++)
   {
-    //写入数据
+    if(0 == byteCnt)
+    {
+      exmc_nand_ecc_config(EXMC_BANK1_NAND, DISABLE);
+      exmc_nand_ecc_config(EXMC_BANK1_NAND, ENABLE);
+    }
     NAND_DATA_AREA = buf[i];
 
     //保存ECC值
@@ -320,7 +324,7 @@ u32 NandWritePage(u32 block, u32 page, u32 column, u8* buf, u32 len)
       while(RESET == exmc_flag_get(EXMC_BANK1_NAND, EXMC_NAND_PCCARD_FLAG_FIFOE));
 
       //获取ECC值
-      ecc[eccCnt] = exmc_ecc_get(EXMC_BANK1_NAND);
+      ecc[eccCnt] = exmc_ecc_get(EXMC_BANK1_NAND) & 0x00FFFFFFU;
       eccCnt++;
 
       //清空计数
@@ -399,7 +403,7 @@ u32 NandReadPage(u32 block, u32 page, u32 column, u8* buf, u32 len)
   u32 eccHard[4];  //硬件ECC值
   u32 eccFlash[4]; //Flash中的ECC值
   u32 eccAddr;     //ECC存储地址
-  u8  spare[4];    //读写Spare缓冲区
+  u8  spare[4 * 4]; //最多4个扇区，每个ECC占4字节
   
   //读取main区地址校验，页内列地址不是512字节对齐则返回失败
   if((column < NAND_PAGE_SIZE) && (0 != column % 512)){return NAND_FAIL;}
@@ -429,7 +433,11 @@ u32 NandReadPage(u32 block, u32 page, u32 column, u8* buf, u32 len)
   eccCnt = 0;
   for(i = 0; i < len; i++)
   {
-    //读取数据
+    if(0 == byteCnt)
+    {
+      exmc_nand_ecc_config(EXMC_BANK1_NAND, DISABLE);
+      exmc_nand_ecc_config(EXMC_BANK1_NAND, ENABLE);
+    }
     buf[i] = NAND_DATA_AREA;
 
     //保存ECC值
@@ -440,7 +448,7 @@ u32 NandReadPage(u32 block, u32 page, u32 column, u8* buf, u32 len)
       while(RESET == exmc_flag_get(EXMC_BANK1_NAND, EXMC_NAND_PCCARD_FLAG_FIFOE));
 
       //获取ECC值
-      eccHard[eccCnt] = exmc_ecc_get(EXMC_BANK1_NAND);
+      eccHard[eccCnt] = exmc_ecc_get(EXMC_BANK1_NAND) & 0x00FFFFFFU;
       eccCnt++;
 
       //清空计数
@@ -448,36 +456,45 @@ u32 NandReadPage(u32 block, u32 page, u32 column, u8* buf, u32 len)
     }
   }
 
-  //计算读取ECC的spare区地址
-  eccAddr = NAND_PAGE_SIZE + 16 + 4 * (column / 512);
+  //单独发起一次页读，从Spare区取出每个扇区的ECC。
+  eccAddr = 16 + 4 * (column / 512);
+  if(NAND_OK != NandReadSpare(block, page, eccAddr, spare, 4 * eccCnt))
+  {
+    return NAND_FAIL;
+  }
 
-  //设置读取Spare位置
-  NandDelay(NAND_TWHR_DELAY);             //tWHR等待延迟
-  NAND_CMD_AREA  = 0x05;                  //随机读命令
-  NAND_ADDR_AREA = (eccAddr >> 0) & 0xFF; //随机读地址低位
-  NAND_ADDR_AREA = (eccAddr >> 8) & 0xFF; //随机读地址高位
-  NAND_CMD_AREA  = 0xE0;                  //命令结束
-  NandDelay(NAND_TWHR_DELAY);             //tWHR等待延迟
-  NandDelay(NAND_TREA_DELAY);             //tREA等待延时
-
-  //从Spare区指定位置读出之前写入的ECC
   for(i = 0; i < eccCnt; i++)
   {
-    spare[0] = NAND_DATA_AREA;
-    spare[1] = NAND_DATA_AREA;
-    spare[2] = NAND_DATA_AREA;
-    spare[3] = NAND_DATA_AREA;
-    eccFlash[i] = ((u32)spare[3] << 24) | ((u32)spare[2] << 16) | ((u32)spare[1] << 8) | ((u32)spare[0] << 0);
+    const u8 *stored = spare + 4 * i;
+    eccFlash[i] = ((u32)stored[3] << 24) | ((u32)stored[2] << 16) |
+                  ((u32)stored[1] << 8) | (u32)stored[0];
   }
 
   //校验并尝试修复数据
   for(i = 0; i < eccCnt; i++)
   {
     //printf("NandReadPage: Ecc hard: 0x%08X, flash 0x%08X\r\n", eccHard[i], eccFlash[i]);
-    if(eccHard[i] != eccFlash[i])
+    //512字节ECC只比较低24位，兼容旧记录中的第4字节。
+    if(0xFFFFFFFFU == eccFlash[i])
+    {
+      const u8 *data = buf + 512 * i;
+      u32 offset;
+      for(offset = 0; offset < 512 && 0xFF == data[offset]; offset++);
+      if(512 == offset)
+      {
+        continue;
+      }
+    }
+    if(eccHard[i] != (eccFlash[i] & 0x00FFFFFFU))
     {
       printf("NandReadPage: Ecc err hard:0x%x, flash:0x%x\r\n", eccHard[i], eccFlash[i]); 
       printf("NandReadPage: block:%d, page: %d, column:%d\r\n",block, page, column);
+      //有效位不匹配且填充异常时，停止纠错以免翻转有效数据。
+      if(0 != (eccFlash[i] >> 24))
+      {
+        printf("NandReadPage: ECC mismatch with nonzero padding\r\n");
+        return NAND_FAIL;
+      }
       if(0 != NandECCCorrection(buf + 512 * i, eccFlash[i], eccHard[i]))
       {
         return NAND_FAIL;
@@ -933,7 +950,11 @@ u32 NandCopyPageWithWrite(u32 sourceBlock, u32 sourcePage, u32 destBlock, u32 de
     eccCnt = 0;
     for(i = 0; i < len; i++)
     {
-      //写入数据
+      if(0 == byteCnt)
+      {
+        exmc_nand_ecc_config(EXMC_BANK1_NAND, DISABLE);
+        exmc_nand_ecc_config(EXMC_BANK1_NAND, ENABLE);
+      }
       NAND_DATA_AREA = buf[i];
 
       //保存ECC值
@@ -944,7 +965,7 @@ u32 NandCopyPageWithWrite(u32 sourceBlock, u32 sourcePage, u32 destBlock, u32 de
         while(RESET == exmc_flag_get(EXMC_BANK1_NAND, EXMC_NAND_PCCARD_FLAG_FIFOE));
 
         //获取ECC值
-        ecc[eccCnt] = exmc_ecc_get(EXMC_BANK1_NAND);
+        ecc[eccCnt] = exmc_ecc_get(EXMC_BANK1_NAND) & 0x00FFFFFFU;
         eccCnt++;
 
         //清空计数

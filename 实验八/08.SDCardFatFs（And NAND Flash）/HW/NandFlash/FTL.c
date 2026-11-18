@@ -91,16 +91,11 @@ u32 InitFTL(void)
     return 1;
   }
 
-  //创建LUI表
+  //映射无效时保留介质内容，交由上层处理错误。
   if(0 != CreateLUT())
   {
-    //生成LUT表失败，需要重新初始化NandFlash
-    printf("InitFTL: format nand flash...\r\n");
-    if(FTLFormat())
-    {
-      printf("InitFTL: format failed!\r\n");
-      return 2;
-    }
+    printf("InitFTL: invalid NAND mapping\r\n");
+    return 2;
   }
 
   //创建LUT表成功，输出NandFlash块信息
@@ -196,7 +191,7 @@ u32 FTLSetBlockUseFlag(u32 blockNum)
 *********************************************************************************************************/
 u32 FTLLogicNumToPhysicalNum(u32 logicNum)
 {
-  if(logicNum > s_structFTLDev.blockTotalNum)
+  if(logicNum >= s_structFTLDev.blockTotalNum)
   {
     return INVALID_ADDR;
   }
@@ -280,6 +275,11 @@ u32 CreateLUT(void)
   return 0;
 }
 
+u32 FTLGetSectorCount(void)
+{
+  return s_structFTLDev.validBlockNum * s_structFTLDev.blockPageNum * s_structFTLDev.sectorPerPage;
+}
+
 /*********************************************************************************************************
 * 函数名称：FTLFormat
 * 函数功能：格式化NAND 重建LUT表
@@ -342,7 +342,11 @@ u32 FTLFormat(void)
       spare[1] = (logicNum >> 8 ) & 0xFF;
       spare[2] = (logicNum >> 16) & 0xFF;
       spare[3] = (logicNum >> 24) & 0xFF;
-      NandWriteSpare(i, 0, 2, spare, 4);
+      if(NAND_OK != NandWriteSpare(i, 0, 2, spare, 4))
+      {
+        printf("FTLFormat: mapping write failed at block %u\r\n", i);
+        return 2;
+      }
 
       //逻辑块编号加一
       logicNum++;
@@ -355,7 +359,7 @@ u32 FTLFormat(void)
   }
 
   //重建LUT表
-  if(CreateLUT())
+  if(logicNum != goodBlock || CreateLUT() || s_structFTLDev.validBlockNum != logicNum)
   {
     return 2;
   }

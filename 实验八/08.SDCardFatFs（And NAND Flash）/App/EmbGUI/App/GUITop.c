@@ -131,24 +131,24 @@ void GUITask(void)
   EnumGUIButtons button;
 
   //按键扫描
-  button = ScanGUIButton();
-  if(GUI_BUTTON_NONE != button)
+  button = ScanGUIButton();                         //检查哪个按键按下
+  if(GUI_BUTTON_NONE != button)                     //判断回调
   {
     //前一页
-    if(GUI_BUTTON_PREVIOUS == button)
+    if(GUI_BUTTON_PREVIOUS == button)            
     {
-      if(NULL != s_pGUIDev->previousPageCallback)
+      if(NULL != s_pGUIDev->previousPageCallback)   
       {
-        s_pGUIDev->previousPageCallback();
+        s_pGUIDev->previousPageCallback();          
       }
     }
 
     //后一页
     else if(GUI_BUTTON_NEXT == button)
     {
-      if(NULL != s_pGUIDev->nextPageCallback)
+      if(NULL != s_pGUIDev->nextPageCallback)   //把 NextPage 的函数地址存进结构体
       {
-        s_pGUIDev->nextPageCallback();
+        s_pGUIDev->nextPageCallback();          //把结构体的地址交给 InitGUI()，它会把这个地址存到 s_pGUIDev
       }
     }
   }

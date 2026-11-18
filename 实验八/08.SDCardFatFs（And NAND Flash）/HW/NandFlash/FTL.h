@@ -41,6 +41,7 @@ u32  FTLCheckBlockFlag(u32 blockNum);                //检查坏块标志位
 u32  FTLSetBlockUseFlag(u32 blockNum);               //标记某一个快已经使用
 u32  FTLLogicNumToPhysicalNum(u32 logicNum);         //逻辑块号转换为物理块号
 u32  CreateLUT(void);                                //重新创建LUT表
+u32  FTLGetSectorCount(void);
 u32  FTLFormat(void);                                //格式化NAND 重建LUT表
 u32  FTLFineUnuseBlock(u32 startBlock, u32 oddEven); //查找未使用的块
 u32  FTLWriteSectors(u8 *pBuffer, u32 sectorNo, u32 sectorSize, u32 sectorCount); //写扇区

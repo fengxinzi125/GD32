@@ -23,6 +23,7 @@
 #include "GUIPlatform.h"
 #include "stdio.h"
 #include "ff.h"
+#include "FTL.h"
 
 /*********************************************************************************************************
 *                                              宏定义
@@ -259,59 +260,48 @@ static void NextPage(void)
 /*********************************************************************************************************
 *                                              API函数实现
 *********************************************************************************************************/
-/*********************************************************************************************************
-* 函数名称：InitFatFsTest
-* 函数功能：初始化FatFs与读写SD卡实验模块
-* 输入参数：void
-* 输出参数：void
-* 返 回 值：void
-* 创建日期：2021年07月01日
-* 注    意：
-*********************************************************************************************************/
-void InitFatFsTest(void)
-{
-  static FATFS   fs[2]; //文件系统设备结构体
-  FRESULT result;       //文件操作返回变量
-  DIR     direct;       //路径
-  FILINFO fileInfo;     //文件信息
-  u32     i;            //循环变量
+//仅由调试器写1，消费后清零，复位不重复擦除。
+static volatile u8 s_nandRebuildRequested = 0;
 
-  //Nand Flash测试用
-  static FIL s_fileTestFile; //进度缓存文件
+static void TestNandFlash(void)
+{
+  static FATFS fs;
+  static FIL s_fileTestFile;
   static u8 s_arrWriteBuf[512];
   static u8 s_arrReadBuf[512];
-  static u32 writeNum;
-  
-  //初始化前一页位置储存区
-  for(i = 0; i < MAX_PREV_PAGE; i++)
+  FRESULT result;
+  u32 writeNum;
+  u32 i;
+
+  //挂载失败时保留NAND内容和真实错误码。
+  printf("挂载NandFlash\r\n");
+  result = f_mount(&fs, FS_VOLUME_NAND, 1);
+  if(1 == s_nandRebuildRequested)
   {
-    s_arrPrevPosition[i] = 0xFFFFFFFF;
+    s_nandRebuildRequested = 0;
+    printf("NAND rebuild 1: started\r\n");
+    if(0 != FTLFormat())
+    {
+      printf("NAND FTLFormat failed\r\n");
+      return;
+    }
+    //SFD直接从逻辑扇区0建立FAT卷，分配单元为1024字节。
+    result = f_mkfs(FS_VOLUME_NAND, 1, 1024);
+    if(FR_OK != result)
+    {
+      printf("NAND f_mkfs failed: %d\r\n", (int)result);
+      return;
+    }
+    result = f_mount(&fs, FS_VOLUME_NAND, 1);
+    if(FR_OK == result)
+    {
+      printf("NAND rebuild 1: mounted\r\n");
+    }
   }
-  
-  //挂载NandFlash
-  while(1)
+  if(FR_OK != result)
   {
-    printf("挂载NandFlash\r\n");
-    result = f_mount(&fs[1], FS_VOLUME_NAND, 1);
-    if(result != FR_OK)
-    {
-      printf("挂载NandFlash失败\r\n");
-      printf("开始格式化NandFlash\r\n");
-      //1024表示单个文件最小占用空间为1024字节，若文件写入失败（卡死）则可以尝试将其改大一些
-      result = f_mkfs(FS_VOLUME_NAND, 0, 1024);
-      if(result != FR_OK)
-      {
-        printf("格式化NandFlash成功\r\n");
-      }
-      else
-      {
-        printf("格式化NandFlash失败\r\n");
-      }
-    }
-    else
-    {
-      break;
-    }
+    printf("NAND f_mount failed: %d; skipping NAND test\r\n", (int)result);
+    return;
   }
   printf("挂载NandFlash成功\r\n");
 
@@ -320,8 +310,8 @@ void InitFatFsTest(void)
   result = f_open(&s_fileTestFile, "1:text.txt", FA_CREATE_ALWAYS | FA_WRITE);
   if(FR_OK != result)
   {
-    printf("创建文件失败\r\n");
-    while(1);
+    printf("NAND f_open 1:text.txt failed: %d\r\n", (int)result);
+    return;
   }
   else
   {
@@ -339,7 +329,7 @@ void InitFatFsTest(void)
   if(FR_OK != result)
   {
     printf("写入文件失败\r\n");
-    while(1);
+    return;
   }
   else
   {
@@ -352,7 +342,7 @@ void InitFatFsTest(void)
   if(FR_OK != result)
   {
     printf("打开文件失败\r\n");
-    while(1);
+    return;
   }
   else
   {
@@ -363,7 +353,7 @@ void InitFatFsTest(void)
   if(FR_OK != result)
   {
     printf("读取文件失败\r\n");
-    while(1);
+    return;
   }
   else
   {
@@ -377,14 +367,38 @@ void InitFatFsTest(void)
     if(s_arrReadBuf[i] != s_arrWriteBuf[i])
     {
       printf("校验失败\r\n");
-      while(1);
+      return;
     }
   }
   printf("校验成功\r\n");
-  
-  
+}
+
+/*********************************************************************************************************
+* 函数名称：InitFatFsTest
+* 函数功能：初始化FatFs与读写SD卡实验模块
+* 输入参数：void
+* 输出参数：void
+* 返 回 值：void
+* 创建日期：2021年07月01日
+* 注    意：
+*********************************************************************************************************/
+void InitFatFsTest(void)
+{
+  static FATFS fs;
+  FRESULT result;
+  DIR direct;
+  FILINFO fileInfo;
+  u32 i;
+//清空翻页记录
+  for(i = 0; i < MAX_PREV_PAGE; i++)
+  {
+    s_arrPrevPosition[i] = 0xFFFFFFFF;
+  }
+
+  TestNandFlash();                                //操作板载NAND
+
   //挂载文件系统
-  result = f_mount(&fs[0], FS_VOLUME_SD, 1);
+  result = f_mount(&fs, FS_VOLUME_SD, 1);         //尝试挂载SD卡
   if(result != FR_OK)
   {
     printf("挂载文件系统失败 (%d)\r\n", result);
@@ -394,38 +408,35 @@ void InitFatFsTest(void)
     printf("挂载文件系统成功\r\n");
   }
 
-  //打开特定路径
-  result = f_opendir(&direct, "0:/book");
-  if(result != FR_OK)
+  //挂载和打开成功后，才使用目录对象。
+  if(FR_OK == result)
   {
-    printf("路径不存在\r\n");
-  }
-  else
-  {
-    printf("成功打开指定目录\r\n");
-  }
-
-  //查询目录下所有文件，并将文件名字打印输出到串口
-  while(1)
-  {
-    result = f_readdir(&direct, &fileInfo);
-    if((result != FR_OK) || (0 == fileInfo.fname[0]))
+    result = f_opendir(&direct, "0:/book");
+    if(FR_OK == result)
     {
-      break;
+      printf("成功打开指定目录\r\n");
+      while(1)
+      {
+        result = f_readdir(&direct, &fileInfo);
+        if((FR_OK != result) || (0 == fileInfo.fname[0]))
+        {
+          break;
+        }
+        printf("*/%s\r\n", fileInfo.fname);
+      }
+
+      result = f_closedir(&direct);
+      if(FR_OK != result)
+      {
+        printf("关闭目录失败\r\n");
+      }
     }
     else
     {
-      printf("*/%s\r\n", fileInfo.fname);
+      printf("打开目录失败 (%d)\r\n", (int)result);
     }
   }
 
-  //关闭目录
-  result = f_closedir(&direct);
-  if(result != FR_OK)
-  {
-    printf("关闭目录失败\r\n");
-  }
-  
   //设置书名
   s_structGUIDev.bookName = "Sherlock Holmes";
 
